@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 26, 2014 12:17:09 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="lantern_jpa.RoleMaster" table="ROLEMASTER">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="role" type="java.lang.String">
+            <column name="ROLE" />
+        </property>
+        <many-to-one name="statusMaster" class="lantern_jpa.StatusMaster" fetch="join">
+            <column name="STATUSMASTER" />
+        </many-to-one>
+        <list name="roleMenuMaps" inverse="false" table="ROLEMENUMAP" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="lantern_jpa.RoleMenuMap" />
+        </list>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 26, 2014 12:17:09 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="lantern_jpa.StockTransaction" table="STOCKTRANSACTION">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="availableQty" type="java.math.BigDecimal">
+            <column name="AVAILABLEQTY" />
+        </property>
+        <property name="invoiceNo" type="java.lang.String">
+            <column name="INVOICENO" />
+        </property>
+        <property name="invoiceType" type="java.lang.String">
+            <column name="INVOICETYPE" />
+        </property>
+        <property name="transQty" type="java.math.BigDecimal">
+            <column name="TRANSQTY" />
+        </property>
+        <property name="transactionDate" type="java.util.Date">
+            <column name="TRANSACTIONDATE" />
+        </property>
+        <many-to-one name="itemMaster" class="lantern_jpa.ItemMaster" fetch="join">
+            <column name="ITEMMASTER" />
+        </many-to-one>
+        <many-to-one name="userDetail" class="lantern_jpa.UserDetail" fetch="join">
+            <column name="USERDETAIL" />
+        </many-to-one>
+        <many-to-one name="locationMaster" class="lantern_jpa.LocationMaster" fetch="join">
+            <column name="LOCATIONMASTER" />
+        </many-to-one>
+        <many-to-one name="statusMaster" class="lantern_jpa.StatusMaster" fetch="join">
+            <column name="STATUSMASTER" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

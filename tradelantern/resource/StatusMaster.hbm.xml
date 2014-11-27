@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 26, 2014 12:17:09 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="lantern_jpa.StatusMaster" table="STATUSMASTER">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="TYPE" />
+        </property>
+        <list name="customerMasters" inverse="false" table="CUSTOMERMASTER" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="lantern_jpa.CustomerMaster" />
+        </list>
+        <list name="itemMasters" inverse="false" table="ITEMMASTER" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="lantern_jpa.ItemMaster" />
+        </list>
+        <list name="locationMasters" inverse="false" table="LOCATIONMASTER" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="lantern_jpa.LocationMaster" />
+        </list>
+        <list name="menuMasters" inverse="false" table="MENUMASTER" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="lantern_jpa.MenuMaster" />
+        </list>
+        <list name="purchaseSummaries" inverse="false" table="PURCHASESUMMARY" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="lantern_jpa.PurchaseSummary" />
+        </list>
+        <list name="purchaseTransactions" inverse="false" table="PURCHASETRANSACTION" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="lantern_jpa.PurchaseTransaction" />
+        </list>
+        <list name="roleMasters" inverse="false" table="ROLEMASTER" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="lantern_jpa.RoleMaster" />
+        </list>
+        <list name="sellSummaries1" inverse="false" table="SELLSUMMARY" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="lantern_jpa.SellSummary" />
+        </list>
+        <list name="sellSummaries2" inverse="false" table="SELLSUMMARY" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="lantern_jpa.SellSummary" />
+        </list>
+        <list name="sellTransactions" inverse="false" table="SELLTRANSACTION" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="lantern_jpa.SellTransaction" />
+        </list>
+        <list name="stSummaries" inverse="false" table="STSUMMARY" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="lantern_jpa.StSummary" />
+        </list>
+        <list name="stTransactions" inverse="false" table="STTRANSACTION" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="lantern_jpa.StTransaction" />
+        </list>
+        <list name="stocks" inverse="false" table="STOCK" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="lantern_jpa.Stock" />
+        </list>
+        <list name="stockTransactions" inverse="false" table="STOCKTRANSACTION" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="lantern_jpa.StockTransaction" />
+        </list>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 26, 2014 12:17:09 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="lantern_jpa.SellSummary" table="SELLSUMMARY">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="invoiceNo" type="java.lang.String">
+            <column name="INVOICENO" />
+        </property>
+        <property name="invoiceType" type="java.lang.String">
+            <column name="INVOICETYPE" />
+        </property>
+        <property name="totalParticular" type="int">
+            <column name="TOTALPARTICULAR" />
+        </property>
+        <property name="totalPriceAfterDisc" type="java.math.BigDecimal">
+            <column name="TOTALPRICEAFTERDISC" />
+        </property>
+        <property name="totalPriceBeforeDisc" type="java.math.BigDecimal">
+            <column name="TOTALPRICEBEFOREDISC" />
+        </property>
+        <property name="transactionDate" type="java.util.Date">
+            <column name="TRANSACTIONDATE" />
+        </property>
+        <many-to-one name="customerMaster" class="lantern_jpa.CustomerMaster" fetch="join">
+            <column name="CUSTOMERMASTER" />
+        </many-to-one>
+        <many-to-one name="locationMaster" class="lantern_jpa.LocationMaster" fetch="join">
+            <column name="LOCATIONMASTER" />
+        </many-to-one>
+        <many-to-one name="statusMaster1" class="lantern_jpa.StatusMaster" fetch="join">
+            <column name="STATUSMASTER1" />
+        </many-to-one>
+        <many-to-one name="statusMaster2" class="lantern_jpa.StatusMaster" fetch="join">
+            <column name="STATUSMASTER2" />
+        </many-to-one>
+        <many-to-one name="userDetail" class="lantern_jpa.UserDetail" fetch="join">
+            <column name="USERDETAIL" />
+        </many-to-one>
+        <list name="sellTransactions" inverse="false" table="SELLTRANSACTION" lazy="true">
+            <key>
+                <column name="SERIALVERSIONUID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="lantern_jpa.SellTransaction" />
+        </list>
+    </class>
+</hibernate-mapping>
