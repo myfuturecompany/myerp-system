@@ -1,0 +1,131 @@
+body {
+	
+	background-image: url('../image/background_faded.jpg'); 
+	background-repeat: no-repeat; 
+	background-size: 100% 
+	
+}
+
+div.myprofile{
+	color:white;
+
+	-webkit-border-radius: 99px;
+	-moz-border-radius: 99px;
+	border-radius: 99px;
+
+	-webkit-box-shadow: #878787 23px 23px 23px;
+	-moz-box-shadow: #878787 23px 23px 23px;
+	box-shadow: #878787 23px 23px 23px;
+	
+	background-image:url("/noticeboard/image/login.jpg");
+	background-size: 100% 500px;
+    background-repeat: no-repeat;	
+    
+    text-transform: uppercase;
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 17px;
+    
+    
+}
+
+
+div.curveedge{
+	color:white;
+	width:400px;
+	height:300px;
+	-webkit-border-radius: 99px;
+	-moz-border-radius: 99px;
+	border-radius: 99px;
+
+	box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    -o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+	
+	position: fixed;
+	top: 30%;
+	right: 5%;
+	background-image:url("/noticeboard/image/login.jpg");
+	background-size: 100% 500px;
+    background-repeat: no-repeat;
+}
+
+
+div.registration{
+	color:white;
+	width:450px;
+	height:450px;
+	-webkit-border-radius: 99px;
+	-moz-border-radius: 99px;
+	border-radius: 99px;
+	-webkit-box-shadow: #878787 23px 23px 23px;
+	-moz-box-shadow: #878787 23px 23px 23px;
+	box-shadow: #878787 23px 23px 23px;
+	
+	position: fixed;
+	top: 20%;
+	left:30%;
+	background-image:url("/noticeboard/image/login.jpg");
+	background-size: 100% 500px;
+    background-repeat: no-repeat;
+}
+
+div.notice{
+	color:white;
+	width:600px;
+	height:500px;
+	-webkit-border-radius: 99px;
+	-moz-border-radius: 99px;
+	border-radius: 99px;
+	-webkit-box-shadow: #878787 23px 23px 23px;
+	-moz-box-shadow: #878787 23px 23px 23px;
+	box-shadow: #878787 23px 23px 23px;
+	
+	position: fixed;
+	top: 17%;
+	left:22%;
+	background-image:url("/noticeboard/image/login.jpg");
+	background-size: 100% 500px;
+    background-repeat: no-repeat;
+}
+
+div.header {
+	width: 100%; 
+	
+   color: white; 
+   font: bold 52px Helvetica, Arial, Sans-Serif;
+   text-shadow: 1px 1px #000000, 
+                2px 2px #000000, 
+                3px 3px #000000;
+   -webkit-transition: all 0.12s ease-out;
+   -moz-transition:    all 0.12s ease-out;
+   -ms-transition:     all 0.12s ease-out;
+   -o-transition:      all 0.12s ease-out;
+	text-transform: uppercase;
+	
+	font-weight: bold;
+	font-size: 30px;
+	
+}
+
+div.menu div {
+	float: left;
+	color: white;
+	width: 100px;
+	background-color: black;
+	text-align: center;
+	height: 29px;
+	vertical-align: middle;
+	margin-left: 10px;
+	font-weight: bold;
+	font-size: 18px;
+}
+div.menu div:HOVER{
+	
+	background-color: white;
+	cursor: pointer;
+	text-shadow: 1px 1px #000000;
+	color: black;
+	
+}

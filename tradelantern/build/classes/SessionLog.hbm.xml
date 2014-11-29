@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 28, 2014 1:28:38 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="model.SessionLog" table="SESSIONLOG">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="ipAddress" type="java.lang.String">
+            <column name="IPADDRESS" />
+        </property>
+        <property name="loginTime" type="java.util.Date">
+            <column name="LOGINTIME" />
+        </property>
+        <property name="logoutTime" type="java.util.Date">
+            <column name="LOGOUTTIME" />
+        </property>
+        <property name="sessionCreated" type="java.util.Date">
+            <column name="SESSIONCREATED" />
+        </property>
+        <property name="sessionId" type="java.lang.String">
+            <column name="SESSIONID" />
+        </property>
+        <property name="userAgent" type="java.lang.String">
+            <column name="USERAGENT" />
+        </property>
+        <property name="userName" type="java.lang.String">
+            <column name="USERNAME" />
+        </property>
+    </class>
+</hibernate-mapping>

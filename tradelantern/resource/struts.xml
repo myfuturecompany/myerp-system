@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="default" extends="struts-default">
+
+		<global-results>
+			<result name="failed">web-application/pages/jsp/failed.jsp</result>
+		</global-results>
+
+		<action name="start" class="com.lantern.actions.LanternAction"
+			method="execute">
+			<result name="login">web-application/pages/jsp/login.jsp</result>
+		</action>
+
+		<action name="login" class="com.lantern.actions.LanternAction"
+			method="login">
+			<result name="dashboard">web-application/pages/jsp/dashboard.jsp</result>
+		</action>
+
+		<action name="user" class="com.lantern.actions.NavigationAction"
+			method="user">
+			<result name="user">web-application/pages/jsp/user.jsp</result>
+		</action>
+
+		<action name="purchase" class="com.lantern.actions.NavigationAction"
+			method="purchase">
+			<result name="purchase">web-application/pages/jsp/purchase.jsp</result>
+		</action>
+
+		<action name="transfer" class="com.lantern.actions.NavigationAction"
+			method="transfer">
+			<result name="transfer">web-application/pages/jsp/transfer.jsp</result>
+		</action>
+
+		<action name="sales" class="com.lantern.actions.NavigationAction"
+			method="sales">
+			<result name="sales">web-application/pages/jsp/sales.jsp</result>
+		</action>
+
+		<action name="stock" class="com.lantern.actions.NavigationAction"
+			method="stock">
+			<result name="stock">web-application/pages/jsp/stock.jsp</result>
+		</action>
+
+		<action name="report" class="com.lantern.actions.NavigationAction"
+			method="report">
+			<result name="report">web-application/pages/jsp/report.jsp</result>
+		</action>
+
+	</package>
+</struts>
