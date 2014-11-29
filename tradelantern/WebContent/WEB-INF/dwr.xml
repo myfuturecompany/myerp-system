@@ -7,6 +7,11 @@
     <create creator="new" javascript="JDate">
       <param name="class" value="java.util.Date"/>
     </create>
+    
+    <create creator="new" javascript="UserServices">
+      <param name="class" value="com.lantern.services.UserServices"/>
+    </create>
+    
     <convert converter="bean" match="com.lantern.beans.*"/>
     
   </allow>

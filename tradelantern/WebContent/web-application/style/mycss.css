@@ -2,8 +2,10 @@ body {
 	
 	background-image: url('../image/background_faded.jpg'); 
 	background-repeat: no-repeat; 
-	background-size: 100% 
+	background-size: 100%;
 	
+	font-weight:bold;
+	text-shadow: 1px 1px #000000;
 }
 
 div.myprofile{

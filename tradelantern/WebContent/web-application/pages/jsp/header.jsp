@@ -14,12 +14,13 @@
 
 <div  align="right" style="background-color: black; height: 30px;">
 	<div class="menu">
-		<s:form action="user"><div onclick="navigate(this)"> USERS </div> </s:form>
+		<s:form action="user"><div onclick="navigate(this)"><span class="glyphicon glyphicon-user"></span> USERS </div> </s:form>
 		<s:form action="purchase"><div onclick="navigate(this)">PURCHASE</div></s:form>
 		<s:form action="transfer"><div onclick="navigate(this)">TRANSFER</div></s:form>
 		<s:form action="sales"><div onclick="navigate(this)">SALES</div></s:form>
 		<s:form action="stock"><div onclick="navigate(this)">STOCK</div></s:form>
 		<s:form action="report"><div onclick="navigate(this)">REPORT</div></s:form>
+		<s:form action="setup"><div onclick="navigate(this)">SETUP</div></s:form>
 	</div>
 	<div class="header">ADVANCE ELECTRONICS</div>
 </div>
