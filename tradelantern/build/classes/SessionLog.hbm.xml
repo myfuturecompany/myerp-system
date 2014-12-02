@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Nov 28, 2014 1:28:38 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="model.SessionLog" table="SESSIONLOG">
+    <class name="com.lantern.beans.SessionLog" table="SESSIONLOG">
         <id name="id" type="int">
             <column name="ID" />
             <generator class="assigned" />

@@ -4,10 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+
+
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-
+    <script type='text/javascript' src='/tradelantern/dwr/interface/UserServices.js'></script>
 
 	<table id="userDetails">
 	</table>
@@ -121,11 +124,40 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-					<button type="button" class="btn btn-primary">Save User</button>
+					<button type="button" class="btn btn-primary" onclick="saveUser()">Save User</button>
 				</div>
 			</div>
 		</div>
 	</div>
+
+
+	<script type="text/javascript">
+	
+	function saveUser(){
+		
+		var user = {
+				"userName":null,
+				"name":null,
+				"address":null,
+				"contactNo":null,
+				"email":null,
+				"role":null,
+				"locationCd":null,
+		};
+		
+		
+		dwr.util.getValues(user);
+		
+		UserServices.saveUser(user,function(p){
+			alert(p);   
+		});
+		
+	}
+	
+	
+	
+	</script>
+
 
 
 </body>

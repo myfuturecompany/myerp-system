@@ -8,61 +8,38 @@ import java.util.Date;
 
 /**
  * The persistent class for the stock_transaction database table.
- * 
  */
-@Entity
-@Table(name="stock_transaction")
-@NamedQuery(name="StockTransaction.findAll", query="SELECT s FROM StockTransaction s")
 public class StockTransaction implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	private int id;
+	private String id;
 
-	@Column(name="available_qty")
 	private BigDecimal availableQty;
 
-	@Column(name="invoice_no")
 	private String invoiceNo;
 
-	@Column(name="invoice_type")
 	private String invoiceType;
 
-	@Column(name="trans_qty")
 	private BigDecimal transQty;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="transaction_date")
 	private Date transactionDate;
 
-	//bi-directional many-to-one association to ItemMaster
-	@ManyToOne
-	@JoinColumn(name="item")
 	private ItemMaster itemMaster;
 
-	//bi-directional many-to-one association to UserDetail
-	@ManyToOne
-	@JoinColumn(name="user_id")
 	private UserDetail userDetail;
 
-	//bi-directional many-to-one association to LocationMaster
-	@ManyToOne
-	@JoinColumn(name="location_id")
 	private LocationMaster locationMaster;
 
-	//bi-directional many-to-one association to StatusMaster
-	@ManyToOne
-	@JoinColumn(name="status")
 	private StatusMaster statusMaster;
 
 	public StockTransaction() {
 	}
 
-	public int getId() {
+	public String getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

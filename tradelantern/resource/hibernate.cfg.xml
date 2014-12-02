@@ -7,5 +7,22 @@
   <property name="hibernate.connection.url">jdbc:mysql://localhost/tradelantern</property>
   <property name="hibernate.connection.username">root</property>
   <property name="hibernate.connection.password">root</property>
+  <mapping resource="UserDetail.hbm.xml"/>
+  <mapping resource="StTransaction.hbm.xml"/>
+  <mapping resource="StSummary.hbm.xml"/>
+  <mapping resource="StockTransaction.hbm.xml"/>
+  <mapping resource="Stock.hbm.xml"/>
+  <mapping resource="StatusMaster.hbm.xml"/>
+  <mapping resource="SessionLog.hbm.xml"/>
+  <mapping resource="SellTransaction.hbm.xml"/>
+  <mapping resource="SellSummary.hbm.xml"/>
+  <mapping resource="RoleMenuMap.hbm.xml"/>
+  <mapping resource="RoleMaster.hbm.xml"/>
+  <mapping resource="PurchaseTransaction.hbm.xml"/>
+  <mapping resource="PurchaseSummary.hbm.xml"/>
+  <mapping resource="MenuMaster.hbm.xml"/>
+  <mapping resource="LocationMaster.hbm.xml"/>
+  <mapping resource="ItemMaster.hbm.xml"/>
+  <mapping resource="CustomerMaster.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>

@@ -3,14 +3,11 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Nov 26, 2014 12:17:09 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="lantern_jpa.SellSummary" table="SELLSUMMARY">
-        <id name="id" type="java.lang.Long">
-            <column name="ID" />
+    <class name="com.lantern.beans.SellSummary" table="SELLSUMMARY">
+        <id name="invoiceNo" type="java.lang.String">
+            <column name="INVOICENO" />
             <generator class="assigned" />
         </id>
-        <property name="invoiceNo" type="java.lang.String">
-            <column name="INVOICENO" />
-        </property>
         <property name="invoiceType" type="java.lang.String">
             <column name="INVOICETYPE" />
         </property>
@@ -26,19 +23,19 @@
         <property name="transactionDate" type="java.util.Date">
             <column name="TRANSACTIONDATE" />
         </property>
-        <many-to-one name="customerMaster" class="lantern_jpa.CustomerMaster" fetch="join">
+        <many-to-one name="customerMaster" class="com.lantern.beans.CustomerMaster" fetch="join">
             <column name="CUSTOMERMASTER" />
         </many-to-one>
-        <many-to-one name="locationMaster" class="lantern_jpa.LocationMaster" fetch="join">
+        <many-to-one name="locationMaster" class="com.lantern.beans.LocationMaster" fetch="join">
             <column name="LOCATIONMASTER" />
         </many-to-one>
-        <many-to-one name="statusMaster1" class="lantern_jpa.StatusMaster" fetch="join">
+        <many-to-one name="statusMaster1" class="com.lantern.beans.StatusMaster" fetch="join">
             <column name="STATUSMASTER1" />
         </many-to-one>
-        <many-to-one name="statusMaster2" class="lantern_jpa.StatusMaster" fetch="join">
+        <many-to-one name="statusMaster2" class="com.lantern.beans.StatusMaster" fetch="join">
             <column name="STATUSMASTER2" />
         </many-to-one>
-        <many-to-one name="userDetail" class="lantern_jpa.UserDetail" fetch="join">
+        <many-to-one name="userDetail" class="com.lantern.beans.UserDetail" fetch="join">
             <column name="USERDETAIL" />
         </many-to-one>
         <list name="sellTransactions" inverse="false" table="SELLTRANSACTION" lazy="true">
@@ -46,7 +43,7 @@
                 <column name="SERIALVERSIONUID" />
             </key>
             <list-index></list-index>
-            <one-to-many class="lantern_jpa.SellTransaction" />
+            <one-to-many class="com.lantern.beans.SellTransaction" />
         </list>
     </class>
 </hibernate-mapping>

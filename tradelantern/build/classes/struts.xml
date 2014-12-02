@@ -48,6 +48,11 @@
 			method="report">
 			<result name="report">web-application/pages/jsp/report.jsp</result>
 		</action>
+		
+		<action name="setup" class="com.lantern.actions.NavigationAction"
+			method="setup">
+			<result name="setup">web-application/pages/jsp/setup.jsp</result>
+		</action>
 
 	</package>
 </struts>

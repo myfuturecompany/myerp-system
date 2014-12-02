@@ -27,4 +27,8 @@ public class NavigationAction {
 		return "report";
 	}
 	
+	public String setup(){
+		return "setup";
+	}
+	
 }

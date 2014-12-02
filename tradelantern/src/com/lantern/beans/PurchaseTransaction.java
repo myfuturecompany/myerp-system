@@ -1,7 +1,6 @@
 package com.lantern.beans;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -10,47 +9,43 @@ import java.util.Date;
  * The persistent class for the purchase_transaction database table.
  * 
  */
-@Entity
-@Table(name="purchase_transaction")
-@NamedQuery(name="PurchaseTransaction.findAll", query="SELECT p FROM PurchaseTransaction p")
 public class PurchaseTransaction implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="net_price")
+	private String id;
+	
 	private BigDecimal netPrice;
 
-	@Column(name="purchase_qty")
 	private BigDecimal purchaseQty;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="transaction_date")
 	private Date transactionDate;
 
-	@Column(name="unit_price")
 	private BigDecimal unitPrice;
 
-	//bi-directional many-to-one association to StatusMaster
-	@ManyToOne
-	@JoinColumn(name="status")
 	private StatusMaster statusMaster;
 
-	//bi-directional many-to-one association to PurchaseSummary
-	@ManyToOne
-	@JoinColumn(name="invoice_no")
 	private PurchaseSummary purchaseSummary;
 
-	//bi-directional many-to-one association to ItemMaster
-	@ManyToOne
-	@JoinColumn(name="item")
 	private ItemMaster itemMaster;
 
-	//bi-directional many-to-one association to UserDetail
-	@ManyToOne
-	@JoinColumn(name="user_id")
 	private UserDetail userDetail;
 
 	public PurchaseTransaction() {
 	}
+
+	
+	
+	public String getId() {
+		return id;
+	}
+
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
 
 	public BigDecimal getNetPrice() {
 		return this.netPrice;

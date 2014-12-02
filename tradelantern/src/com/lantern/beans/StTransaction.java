@@ -1,7 +1,6 @@
 package com.lantern.beans;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -10,41 +9,39 @@ import java.util.Date;
  * The persistent class for the st_transaction database table.
  * 
  */
-@Entity
-@Table(name="st_transaction")
-@NamedQuery(name="StTransaction.findAll", query="SELECT s FROM StTransaction s")
 public class StTransaction implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="st_qty")
+	private String id;
+	
 	private BigDecimal stQty;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="transaction_date")
 	private Date transactionDate;
 
-	//bi-directional many-to-one association to StSummary
-	@ManyToOne
-	@JoinColumn(name="invoice_no")
 	private StSummary stSummary;
 
-	//bi-directional many-to-one association to UserDetail
-	@ManyToOne
-	@JoinColumn(name="user_id")
 	private UserDetail userDetail;
 
-	//bi-directional many-to-one association to ItemMaster
-	@ManyToOne
-	@JoinColumn(name="item")
 	private ItemMaster itemMaster;
 
-	//bi-directional many-to-one association to StatusMaster
-	@ManyToOne
-	@JoinColumn(name="status")
 	private StatusMaster statusMaster;
 
 	public StTransaction() {
 	}
+
+	
+	
+	public String getId() {
+		return id;
+	}
+
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
 
 	public BigDecimal getStQty() {
 		return this.stQty;

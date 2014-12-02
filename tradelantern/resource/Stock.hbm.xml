@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Nov 26, 2014 12:17:09 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="lantern_jpa.Stock" table="STOCK">
+    <class name="com.lantern.beans.Stock" table="STOCK">
         <id name="id" type="int">
             <column name="ID" />
             <generator class="assigned" />
@@ -23,13 +23,13 @@
         <property name="sellPrice" type="java.math.BigDecimal">
             <column name="SELLPRICE" />
         </property>
-        <many-to-one name="statusMaster" class="lantern_jpa.StatusMaster" fetch="join">
+        <many-to-one name="statusMaster" class="com.lantern.beans.StatusMaster" fetch="join">
             <column name="STATUSMASTER" />
         </many-to-one>
-        <many-to-one name="itemMaster" class="lantern_jpa.ItemMaster" fetch="join">
+        <many-to-one name="itemMaster" class="com.lantern.beans.ItemMaster" fetch="join">
             <column name="ITEMMASTER" />
         </many-to-one>
-        <many-to-one name="locationMaster" class="lantern_jpa.LocationMaster" fetch="join">
+        <many-to-one name="locationMaster" class="com.lantern.beans.LocationMaster" fetch="join">
             <column name="LOCATIONMASTER" />
         </many-to-one>
     </class>

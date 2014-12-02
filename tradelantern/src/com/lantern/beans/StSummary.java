@@ -1,7 +1,6 @@
 package com.lantern.beans;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -10,45 +9,23 @@ import java.util.List;
  * The persistent class for the st_summary database table.
  * 
  */
-@Entity
-@Table(name="st_summary")
-@NamedQuery(name="StSummary.findAll", query="SELECT s FROM StSummary s")
 public class StSummary implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="invoice_no")
 	private String invoiceNo;
 
-	@Column(name="total_particular")
 	private int totalParticular;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="transaction_date")
 	private Date transactionDate;
 
-	//bi-directional many-to-one association to LocationMaster
-	@ManyToOne
-	@JoinColumn(name="from_loc_id")
 	private LocationMaster locationMaster1;
 
-	//bi-directional many-to-one association to StatusMaster
-	@ManyToOne
-	@JoinColumn(name="status")
 	private StatusMaster statusMaster;
 
-	//bi-directional many-to-one association to LocationMaster
-	@ManyToOne
-	@JoinColumn(name="to_loc_id")
 	private LocationMaster locationMaster2;
 
-	//bi-directional many-to-one association to UserDetail
-	@ManyToOne
-	@JoinColumn(name="user_id")
 	private UserDetail userDetail;
 
-	//bi-directional many-to-one association to StTransaction
-	@OneToMany(mappedBy="stSummary")
 	private List<StTransaction> stTransactions;
 
 	public StSummary() {
