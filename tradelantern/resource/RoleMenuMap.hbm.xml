@@ -3,13 +3,13 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Nov 26, 2014 12:17:09 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.lantern.beans.RoleMenuMap" table="ROLEMENUMAP">
+    <class name="com.lantern.beans.RoleMenuMap" table="ROLE_MENU_MAP">
         <id name="id" type="int">
             <column name="ID" />
             <generator class="assigned" />
         </id>
         <many-to-one name="roleMaster" class="com.lantern.beans.RoleMaster" fetch="join">
-            <column name="ROLEMASTER" />
+            <column name="ROLE_MASTER" />
         </many-to-one>
         <many-to-one name="menuMaster" class="com.lantern.beans.MenuMaster" fetch="join">
             <column name="MENUMASTER" />

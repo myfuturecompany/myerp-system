@@ -9,48 +9,29 @@ import java.util.List;
  * The persistent class for the item_master database table.
  * 
  */
-@Entity
-@Table(name="item_master")
-@NamedQuery(name="ItemMaster.findAll", query="SELECT i FROM ItemMaster i")
 public class ItemMaster implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
 	private int id;
 
 	private String barcode;
 
-	@Column(name="item_code")
 	private String itemCode;
 
-	@Column(name="item_name")
 	private String itemName;
 
 	private String uom;
 
-	//bi-directional many-to-one association to StatusMaster
-	@ManyToOne
-	@JoinColumn(name="status")
 	private StatusMaster statusMaster;
 
-	//bi-directional many-to-one association to PurchaseTransaction
-	@OneToMany(mappedBy="itemMaster")
 	private List<PurchaseTransaction> purchaseTransactions;
 
-	//bi-directional many-to-one association to SellTransaction
-	@OneToMany(mappedBy="itemMaster")
 	private List<SellTransaction> sellTransactions;
 
-	//bi-directional many-to-one association to StTransaction
-	@OneToMany(mappedBy="itemMaster")
 	private List<StTransaction> stTransactions;
 
-	//bi-directional many-to-one association to Stock
-	@OneToMany(mappedBy="itemMaster")
 	private List<Stock> stocks;
 
-	//bi-directional many-to-one association to StockTransaction
-	@OneToMany(mappedBy="itemMaster")
 	private List<StockTransaction> stockTransactions;
 
 	public ItemMaster() {

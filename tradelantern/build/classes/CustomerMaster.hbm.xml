@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Nov 26, 2014 12:17:09 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.lantern.beans.CustomerMaster" table="CUSTOMERMASTER">
+    <class name="com.lantern.beans.CustomerMaster" table="CUSTOMER_MASTER">
         <id name="id" type="int">
             <column name="ID" />
             <generator class="assigned" />
@@ -12,25 +12,25 @@
             <column name="ADDRESS" />
         </property>
         <property name="contactNumber" type="java.lang.String">
-            <column name="CONTACTNUMBER" />
+            <column name="CONTACT_NUMBER" />
         </property>
         <property name="customerName" type="java.lang.String">
-            <column name="CUSTOMERNAME" />
+            <column name="CUSTOMER_NAME" />
         </property>
         <property name="email" type="java.lang.String">
             <column name="EMAIL" />
         </property>
         <many-to-one name="statusMaster" class="com.lantern.beans.StatusMaster" fetch="join">
-            <column name="STATUSMASTER" />
+            <column name="STATUS" />
         </many-to-one>
-        <list name="purchaseSummaries" inverse="false" table="PURCHASESUMMARY" lazy="true">
+        <list name="purchaseSummaries" inverse="false" table="PURCHASE_SUMMARY" lazy="true">
             <key>
                 <column name="ID" />
             </key>
             <list-index></list-index>
             <one-to-many class="com.lantern.beans.PurchaseSummary" />
         </list>
-        <list name="sellSummaries" inverse="false" table="SELLSUMMARY" lazy="true">
+        <list name="sellSummaries" inverse="false" table="SELL_SUMMARY" lazy="true">
             <key>
                 <column name="ID" />
             </key>

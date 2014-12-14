@@ -18,9 +18,9 @@
             <column name="URL" />
         </property>
         <many-to-one name="statusMaster" class="com.lantern.beans.StatusMaster" fetch="join">
-            <column name="STATUSMASTER" />
+            <column name="STATUS_MASTER" />
         </many-to-one>
-        <list name="roleMenuMaps" inverse="false" table="ROLEMENUMAP" lazy="true">
+        <list name="roleMenuMaps" inverse="false" table="ROLE_MENU_MAP" lazy="true">
             <key>
                 <column name="ID" />
             </key>

@@ -4,6 +4,7 @@
 
 <link href="<%=request.getContextPath() %>/web-application/style/bootstrap.css"	rel="stylesheet">
 <link href="<%=request.getContextPath() %>/web-application/style/mycss.css"	rel="stylesheet">
+<link href="<%=request.getContextPath() %>/web-application/style/jquery.dataTables.min.css"	rel="stylesheet">
 
 <script	src="<%=request.getContextPath() %>/web-application/javascript/jquery-1.9.1.js"	type="text/javascript"></script>
 <script	src="<%=request.getContextPath() %>/web-application/javascript/bootstrap.js"	type="text/javascript"></script>
@@ -11,6 +12,14 @@
 
 <script src="<%=request.getContextPath() %>/dwr/engine.js"	type="text/javascript"></script>
 <script src="<%=request.getContextPath() %>/dwr/util.js"	type="text/javascript"></script>
+<script src="<%=request.getContextPath() %>/dwr/interface/MasterServices.js" type="text/javascript"></script>
+
+
+
+<script src="<%=request.getContextPath() %>/web-application/javascript/masterEntry.js"	type="text/javascript"></script>
+
+
+
 
 <div  align="right" style="background-color: black; height: 30px;">
 	<div class="menu">

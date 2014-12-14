@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Nov 26, 2014 12:17:09 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.lantern.beans.StatusMaster" table="STATUSMASTER">
+    <class name="com.lantern.beans.StatusMaster" table="STATUS_MASTER">
         <id name="id" type="int">
             <column name="ID" />
             <generator class="assigned" />
@@ -17,14 +17,14 @@
         <property name="type" type="java.lang.String">
             <column name="TYPE" />
         </property>
-        <list name="customerMasters" inverse="false" table="CUSTOMERMASTER" lazy="true">
+        <list name="customerMasters" inverse="false" table="CUSTOMER_MASTER" lazy="true">
             <key>
                 <column name="ID" />
             </key>
             <list-index></list-index>
             <one-to-many class="com.lantern.beans.CustomerMaster" />
         </list>
-        <list name="itemMasters" inverse="false" table="ITEMMASTER" lazy="true">
+        <list name="itemMasters" inverse="false" table="ITEM_MASTER" lazy="true">
             <key>
                 <column name="ID" />
             </key>
@@ -45,42 +45,42 @@
             <list-index></list-index>
             <one-to-many class="com.lantern.beans.MenuMaster" />
         </list>
-        <list name="purchaseSummaries" inverse="false" table="PURCHASESUMMARY" lazy="true">
+        <list name="purchaseSummaries" inverse="false" table="PURCHASE_SUMMARY" lazy="true">
             <key>
                 <column name="ID" />
             </key>
             <list-index></list-index>
             <one-to-many class="com.lantern.beans.PurchaseSummary" />
         </list>
-        <list name="purchaseTransactions" inverse="false" table="PURCHASETRANSACTION" lazy="true">
+        <list name="purchaseTransactions" inverse="false" table="PURCHASE_TRANSACTION" lazy="true">
             <key>
                 <column name="ID" />
             </key>
             <list-index></list-index>
             <one-to-many class="com.lantern.beans.PurchaseTransaction" />
         </list>
-        <list name="roleMasters" inverse="false" table="ROLEMASTER" lazy="true">
+        <list name="roleMasters" inverse="false" table="ROLE_MASTER" lazy="true">
             <key>
                 <column name="ID" />
             </key>
             <list-index></list-index>
             <one-to-many class="com.lantern.beans.RoleMaster" />
         </list>
-        <list name="sellSummaries1" inverse="false" table="SELLSUMMARY" lazy="true">
+        <list name="sellSummaries1" inverse="false" table="SELL_SUMMARY" lazy="true">
             <key>
                 <column name="ID" />
             </key>
             <list-index></list-index>
             <one-to-many class="com.lantern.beans.SellSummary" />
         </list>
-        <list name="sellSummaries2" inverse="false" table="SELLSUMMARY" lazy="true">
+        <list name="sellSummaries2" inverse="false" table="SELL_SUMMARY" lazy="true">
             <key>
                 <column name="ID" />
             </key>
             <list-index></list-index>
             <one-to-many class="com.lantern.beans.SellSummary" />
         </list>
-        <list name="sellTransactions" inverse="false" table="SELLTRANSACTION" lazy="true">
+        <list name="sellTransactions" inverse="false" table="SELL_TRANSACTION" lazy="true">
             <key>
                 <column name="ID" />
             </key>

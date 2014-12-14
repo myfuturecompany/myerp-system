@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Nov 26, 2014 12:17:09 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.lantern.beans.SellTransaction" table="SELLTRANSACTION">
+    <class name="com.lantern.beans.SellTransaction" table="SELL_TRANSACTION">
         <id name="id" type="java.lang.String">
             <column name="ID" />
             <generator class="assigned" />
@@ -21,13 +21,13 @@
             <column name="UNITPRICE" />
         </property>
         <many-to-one name="statusMaster" class="com.lantern.beans.StatusMaster" fetch="join">
-            <column name="STATUSMASTER" />
+            <column name="STATUS_MASTER" />
         </many-to-one>
         <many-to-one name="sellSummary" class="com.lantern.beans.SellSummary" fetch="join">
-            <column name="SELLSUMMARY" />
+            <column name="SELL_SUMMARY" />
         </many-to-one>
         <many-to-one name="itemMaster" class="com.lantern.beans.ItemMaster" fetch="join">
-            <column name="ITEMMASTER" />
+            <column name="ITEM_MASTER" />
         </many-to-one>
         <many-to-one name="locationMaster" class="com.lantern.beans.LocationMaster" fetch="join">
             <column name="LOCATIONMASTER" />

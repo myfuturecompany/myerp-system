@@ -4,21 +4,21 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 
 import com.lantern.beans.CustomerMaster;
 import com.lantern.beans.ItemMaster;
 import com.lantern.beans.LocationMaster;
 import com.lantern.beans.RoleMaster;
+import com.lantern.beans.StatusMaster;
+import com.lantern.utils.HibernateUtils;
+import com.lantern.utils.Status.LOCATION;
 
 public class FindImpl {
 
-	private SessionFactory factory = null;
 	private Session session = null;
-	private Configuration cfg  = null;
-
 	
 	public List findAllObject(Class obj ) {
 
@@ -134,6 +134,7 @@ public class FindImpl {
 		try {
 			openConnection();
 			Criteria criteria = session.createCriteria(LocationMaster.class);
+			criteria.add(Restrictions.eq("statusMaster", LOCATION.ACTIVE.getStatus() ));
 			List<LocationMaster> list = criteria.list();
 			return list;
 
@@ -160,19 +161,48 @@ public class FindImpl {
 		return null;
 	}
 	
+	public StatusMaster findStatusById(int id) {
+		try {
+			openConnection();
+			session.beginTransaction();
+			StatusMaster status = (StatusMaster) session.get(StatusMaster.class,id);
+			return status;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return null;
+	}
+	
 	private void openConnection(){
-		cfg = new Configuration();
-		cfg.configure("hibernate.cfg.xml");
-
-		factory = cfg.buildSessionFactory();
-		session = factory.openSession();
+		session = HibernateUtils.getSessionFactory().openSession();
 	}
 
 	private void closeConnection(){
 		if(session != null)
 			session.close();
-		if(factory != null)
-			factory.close();
 	}
+
+	public List<Object[]> findItemList() {
+		try {
+			
+			openConnection();
+			session.beginTransaction();
+			Query query = session.createQuery("SELECT I.itemCode, I.itemName,  S.availableQty, I.uom , S.purchasePrice FROM ItemMaster I LEFT JOIN I.stocks S");
+			List<Object[]> results = query.list();
+			return results;
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return null;
+	}
+
+	
 
 }

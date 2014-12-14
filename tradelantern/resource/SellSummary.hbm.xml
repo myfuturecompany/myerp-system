@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Nov 26, 2014 12:17:09 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.lantern.beans.SellSummary" table="SELLSUMMARY">
+    <class name="com.lantern.beans.SellSummary" table="SELL_SUMMARY">
         <id name="invoiceNo" type="java.lang.String">
             <column name="INVOICENO" />
             <generator class="assigned" />
@@ -24,7 +24,7 @@
             <column name="TRANSACTIONDATE" />
         </property>
         <many-to-one name="customerMaster" class="com.lantern.beans.CustomerMaster" fetch="join">
-            <column name="CUSTOMERMASTER" />
+            <column name="CUSTOMER_MASTER" />
         </many-to-one>
         <many-to-one name="locationMaster" class="com.lantern.beans.LocationMaster" fetch="join">
             <column name="LOCATIONMASTER" />
@@ -38,7 +38,7 @@
         <many-to-one name="userDetail" class="com.lantern.beans.UserDetail" fetch="join">
             <column name="USERDETAIL" />
         </many-to-one>
-        <list name="sellTransactions" inverse="false" table="SELLTRANSACTION" lazy="true">
+        <list name="sellTransactions" inverse="false" table="SELL_TRANSACTION" lazy="true">
             <key>
                 <column name="SERIALVERSIONUID" />
             </key>

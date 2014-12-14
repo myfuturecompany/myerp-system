@@ -12,6 +12,14 @@
       <param name="class" value="com.lantern.services.UserServices"/>
     </create>
     
+    <create creator="new" javascript="MasterServices">
+      <param name="class" value="com.lantern.services.MasterServices"/>
+    </create>
+    
+    <create creator="new" javascript="PurchaseServices">
+      <param name="class" value="com.lantern.services.PurchaseServices"/>
+    </create>
+    
     <convert converter="bean" match="com.lantern.beans.*"/>
     
   </allow>

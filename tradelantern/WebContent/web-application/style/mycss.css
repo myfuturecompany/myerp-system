@@ -8,6 +8,10 @@ body {
 	text-shadow: 1px 1px #000000;
 }
 
+table .numpad {
+	width: 100%;
+}
+
 div.myprofile{
 	color:white;
 
@@ -130,4 +134,8 @@ div.menu div:HOVER{
 	text-shadow: 1px 1px #000000;
 	color: black;
 	
+}
+
+table.master {
+	text-shadow:none;
 }

@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Nov 26, 2014 12:17:09 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.lantern.beans.ItemMaster" table="ITEMMASTER">
+    <class name="com.lantern.beans.ItemMaster" table="ITEM_MASTER">
         <id name="id" type="int">
             <column name="ID" />
             <generator class="assigned" />
@@ -12,32 +12,32 @@
             <column name="BARCODE" />
         </property>
         <property name="itemCode" type="java.lang.String">
-            <column name="ITEMCODE" />
+            <column name="ITEM_CODE" />
         </property>
         <property name="itemName" type="java.lang.String">
-            <column name="ITEMNAME" />
+            <column name="ITEM_NAME" />
         </property>
         <property name="uom" type="java.lang.String">
             <column name="UOM" />
         </property>
         <many-to-one name="statusMaster" class="com.lantern.beans.StatusMaster" fetch="join">
-            <column name="STATUSMASTER" />
+            <column name="STATUS" />
         </many-to-one>
-        <list name="purchaseTransactions" inverse="false" table="PURCHASETRANSACTION" lazy="true">
+        <list name="purchaseTransactions" inverse="false" table="PURCHASE_TRANSACTION" lazy="true">
             <key>
                 <column name="ID" />
             </key>
             <list-index></list-index>
             <one-to-many class="com.lantern.beans.PurchaseTransaction" />
         </list>
-        <list name="sellTransactions" inverse="false" table="SELLTRANSACTION" lazy="true">
+        <list name="sellTransactions" inverse="false" table="SELL_TRANSACTION" lazy="true">
             <key>
                 <column name="ID" />
             </key>
             <list-index></list-index>
             <one-to-many class="com.lantern.beans.SellTransaction" />
         </list>
-        <list name="stTransactions" inverse="false" table="STTRANSACTION" lazy="true">
+        <list name="stTransactions" inverse="false" table="ST_TRANSACTION" lazy="true">
             <key>
                 <column name="ID" />
             </key>
@@ -51,7 +51,7 @@
             <list-index></list-index>
             <one-to-many class="com.lantern.beans.Stock" />
         </list>
-        <list name="stockTransactions" inverse="false" table="STOCKTRANSACTION" lazy="true">
+        <list name="stockTransactions" inverse="false" table="STOCK_TRANSACTION" lazy="true">
             <key>
                 <column name="ID" />
             </key>

@@ -9,42 +9,25 @@ import java.math.BigDecimal;
  * The persistent class for the stock database table.
  * 
  */
-@Entity
-@NamedQuery(name="Stock.findAll", query="SELECT s FROM Stock s")
 public class Stock implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
 	private int id;
 
-	@Column(name="available_qty")
 	private BigDecimal availableQty;
 
-	@Column(name="location_id")
 	private int locationId;
 
-	@Column(name="lower_range")
 	private BigDecimal lowerRange;
 
-	@Column(name="purchase_price")
 	private BigDecimal purchasePrice;
 
-	@Column(name="sell_price")
 	private BigDecimal sellPrice;
 
-	//bi-directional many-to-one association to StatusMaster
-	@ManyToOne
-	@JoinColumn(name="status")
 	private StatusMaster statusMaster;
 
-	//bi-directional many-to-one association to ItemMaster
-	@ManyToOne
-	@JoinColumn(name="item")
 	private ItemMaster itemMaster;
 
-	//bi-directional many-to-one association to LocationMaster
-	@ManyToOne
-	@JoinColumn(name="item")
 	private LocationMaster locationMaster;
 
 	public Stock() {

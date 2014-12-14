@@ -19,7 +19,7 @@
             <column name="LOCATIONMASTER1" />
         </many-to-one>
         <many-to-one name="statusMaster" class="com.lantern.beans.StatusMaster" fetch="join">
-            <column name="STATUSMASTER" />
+            <column name="STATUS_MASTER" />
         </many-to-one>
         <many-to-one name="locationMaster2" class="com.lantern.beans.LocationMaster" fetch="join">
             <column name="LOCATIONMASTER2" />

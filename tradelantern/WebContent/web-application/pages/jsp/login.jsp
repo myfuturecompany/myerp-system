@@ -5,9 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<link href="<%=request.getContextPath() %>/web-application/style/bootstrap.css"	rel="stylesheet">
+<link href="<%=request.getContextPath() %>/web-application/style/mycss.css"	rel="stylesheet">
+
 </head>
 <body style="background-image: url('<%=request.getContextPath() %>/web-application/images/background_index.jpg'); background-repeat: no-repeat; background-size: 100% ">
-<div class="header"  style="background-color: black; height: 30px;">ADVANCE ELECTRONICS</div>
+<div class="header"  style="background-color:transparent; height: 30px; text-align: right;">ADVANCE ELECTRONICS</div>
 
 <div class="curveedge" align="center">
 <br><br>

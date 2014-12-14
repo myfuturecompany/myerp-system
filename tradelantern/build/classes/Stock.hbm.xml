@@ -9,25 +9,25 @@
             <generator class="assigned" />
         </id>
         <property name="availableQty" type="java.math.BigDecimal">
-            <column name="AVAILABLEQTY" />
+            <column name="AVAILABLE_QTY" />
         </property>
         <property name="locationId" type="int">
-            <column name="LOCATIONID" />
+            <column name="LOCATION_ID" />
         </property>
         <property name="lowerRange" type="java.math.BigDecimal">
-            <column name="LOWERRANGE" />
+            <column name="LOWER_RANGE" />
         </property>
         <property name="purchasePrice" type="java.math.BigDecimal">
-            <column name="PURCHASEPRICE" />
+            <column name="PURCHASE_PRICE" />
         </property>
         <property name="sellPrice" type="java.math.BigDecimal">
-            <column name="SELLPRICE" />
+            <column name="SELL_PRICE" />
         </property>
         <many-to-one name="statusMaster" class="com.lantern.beans.StatusMaster" fetch="join">
-            <column name="STATUSMASTER" />
+            <column name="STATUS_MASTER" />
         </many-to-one>
         <many-to-one name="itemMaster" class="com.lantern.beans.ItemMaster" fetch="join">
-            <column name="ITEMMASTER" />
+            <column name="ITEM_MASTER" />
         </many-to-one>
         <many-to-one name="locationMaster" class="com.lantern.beans.LocationMaster" fetch="join">
             <column name="LOCATIONMASTER" />

@@ -9,13 +9,9 @@ import java.util.List;
  * The persistent class for the status_master database table.
  * 
  */
-@Entity
-@Table(name="status_master")
-@NamedQuery(name="StatusMaster.findAll", query="SELECT s FROM StatusMaster s")
 public class StatusMaster implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
 	private int id;
 
 	private String description;
@@ -24,60 +20,32 @@ public class StatusMaster implements Serializable {
 
 	private String type;
 
-	//bi-directional many-to-one association to CustomerMaster
-	@OneToMany(mappedBy="statusMaster")
 	private List<CustomerMaster> customerMasters;
 
-	//bi-directional many-to-one association to ItemMaster
-	@OneToMany(mappedBy="statusMaster")
 	private List<ItemMaster> itemMasters;
 
-	//bi-directional many-to-one association to LocationMaster
-	@OneToMany(mappedBy="statusMaster")
 	private List<LocationMaster> locationMasters;
 
-	//bi-directional many-to-one association to MenuMaster
-	@OneToMany(mappedBy="statusMaster")
 	private List<MenuMaster> menuMasters;
 
-	//bi-directional many-to-one association to PurchaseSummary
-	@OneToMany(mappedBy="statusMaster")
 	private List<PurchaseSummary> purchaseSummaries;
 
-	//bi-directional many-to-one association to PurchaseTransaction
-	@OneToMany(mappedBy="statusMaster")
 	private List<PurchaseTransaction> purchaseTransactions;
 
-	//bi-directional many-to-one association to RoleMaster
-	@OneToMany(mappedBy="statusMaster")
 	private List<RoleMaster> roleMasters;
 
-	//bi-directional many-to-one association to SellSummary
-	@OneToMany(mappedBy="statusMaster1")
 	private List<SellSummary> sellSummaries1;
 
-	//bi-directional many-to-one association to SellSummary
-	@OneToMany(mappedBy="statusMaster2")
 	private List<SellSummary> sellSummaries2;
 
-	//bi-directional many-to-one association to SellTransaction
-	@OneToMany(mappedBy="statusMaster")
 	private List<SellTransaction> sellTransactions;
 
-	//bi-directional many-to-one association to StSummary
-	@OneToMany(mappedBy="statusMaster")
 	private List<StSummary> stSummaries;
 
-	//bi-directional many-to-one association to StTransaction
-	@OneToMany(mappedBy="statusMaster")
 	private List<StTransaction> stTransactions;
 
-	//bi-directional many-to-one association to Stock
-	@OneToMany(mappedBy="statusMaster")
 	private List<Stock> stocks;
 
-	//bi-directional many-to-one association to StockTransaction
-	@OneToMany(mappedBy="statusMaster")
 	private List<StockTransaction> stockTransactions;
 
 	public StatusMaster() {

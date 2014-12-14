@@ -24,7 +24,7 @@
             <column name="TRANSACTIONDATE" />
         </property>
         <many-to-one name="itemMaster" class="com.lantern.beans.ItemMaster" fetch="join">
-            <column name="ITEMMASTER" />
+            <column name="ITEM_MASTER" />
         </many-to-one>
         <many-to-one name="userDetail" class="com.lantern.beans.UserDetail" fetch="join">
             <column name="USERDETAIL" />
@@ -33,7 +33,7 @@
             <column name="LOCATIONMASTER" />
         </many-to-one>
         <many-to-one name="statusMaster" class="com.lantern.beans.StatusMaster" fetch="join">
-            <column name="STATUSMASTER" />
+            <column name="STATUS_MASTER" />
         </many-to-one>
     </class>
 </hibernate-mapping>
