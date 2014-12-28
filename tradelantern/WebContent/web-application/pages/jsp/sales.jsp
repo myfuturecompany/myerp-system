@@ -17,10 +17,11 @@
 </style>
 
 </head>
-<body onload="populatePurchaseTrasactionTable()">
+<body onload="populateItemStockTable();populatePurchaseTrasactionTable()"> 
 <jsp:include page="header.jsp"></jsp:include>
 
-<script src="<%=request.getContextPath() %>/web-application/javascript/sales.js"	type="text/javascript"></script>
+<script src="<%=request.getContextPath() %>/web-application/javascript/purchase.js"	type="text/javascript"></script>
+<script src="<%=request.getContextPath() %>/dwr/interface/PurchaseServices.js"	type="text/javascript"></script>
 
 <!-- <div style="text-align: center;" class="alert alert-primary">PURCHASE BILL</div> -->
 
@@ -39,24 +40,6 @@
 
 <table border="1" style="width: 100%; height: 400px;"> 
 	<tr> 
-		<td width="25%" valign="top">
-			<table id="stockTable" border="1" style="width: 100%;">
-				<thead>
-					<tr><th width="25%">ITEM CODE</th><th>ITEM</th></tr>
-				</thead>
-				<tbody>	
-					<tr><td>101</td><td>ITEM 1</td></tr>
-					<tr><td>101</td><td>ITEM 1</td></tr>
-					<tr><td>101</td><td>ITEM 1</td></tr>
-					<tr><td>101</td><td>ITEM 1</td></tr>
-					<tr><td>101</td><td>ITEM 1</td></tr>
-					<tr><td>101</td><td>ITEM 1</td></tr>
-				</tbody>
-			</table>
-			
-		</td>	
-		
-		
 		<td align="center" valign="top">
 			<div id="purchaseTrasactionDiv">
 				
@@ -117,25 +100,36 @@
 			
 		</td>
 			
+		<td width="25%" valign="top">
+			<div id='stockDiv'>
+				<table id="stockTable" border="1" style="width: 100%;">
+				</table>
+			</div>
+		</td>		
+			
+			
 		<td width="25%" valign="top" align="center">
-			<input type="text" id="itemCode" placeholder="ITEM CODE" style="width: 45%; height: 60px; font-size: 25px;"/>
-			<input type="text" id="itemName" placeholder="ITEM" style="width: 45%; height: 60px; font-size: 25px;"/>
+			
+			<input type="text" disabled="disabled" value="ITEM CODE" style="width: 45%; height: 20px; font-size: 12px; text-align: center; font-weight: bold;"/>
+			<input type="text" disabled="disabled" value="ITEM" style="width: 45%; height: 20px; font-size: 12px; text-align: center; font-weight: bold;"/>
+			<br>
+			<input type="text" id="itemCode"  readonly="readonly" placeholder="ITEM CODE" style="width: 45%; height: 60px; font-size: 25px;"/>
+			<input type="text" id="itemName"  readonly="readonly" placeholder="ITEM" style="width: 45%; height: 60px; font-size: 25px;"/>
 			<br><br>
-			<input type="text" id="quantity" placeholder="QUANTITY" style="width: 45%; height: 60px; font-size: 25px;"/>
-			<input type="text" id="uom" placeholder="UOM" style="width: 45%; height: 60px; font-size: 25px;"/>
+			<input type="text" disabled="disabled" value="QUANTITY" style="width: 45%; height: 20px; font-size: 12px; text-align: center; font-weight: bold;"/>
+			<input type="text" disabled="disabled" value="UOM" style="width: 45%; height: 20px; font-size: 12px; text-align: center; font-weight: bold;"/>
+			<br>
+			<input type="text" id="quantity"  placeholder="QUANTITY" tabindex="2" style="width: 45%; height: 60px; font-size: 25px;"/>
+			<input type="text" id="uom"  readonly="readonly" placeholder="UOM" style="width: 45%; height: 60px; font-size: 25px;"/>
 			<br><br>
-			<input type="text" id="defaultPrice" placeholder="D PRICE" style="width: 45%; height: 60px; font-size: 25px;"/>
-			<input type="text" id="purchasePrice" placeholder="PRICE" style="width: 45%; height: 60px; font-size: 25px;"/>
+			<input type="text" disabled="disabled" value="PRICE" style="width: 45%; height: 20px; font-size: 12px; text-align: center; font-weight: bold;"/>
+			<input type="text" disabled="disabled" value="DEFAULT PRICE" style="width: 45%; height: 20px; font-size: 12px; text-align: center; font-weight: bold;"/>
+			<br>
+			<input type="text" id="purchasePrice"  placeholder="PRICE" tabindex="3" style="width: 45%; height: 60px; font-size: 25px;"/>
+			<input type="text" id="defaultPrice"  readonly="readonly" placeholder="D PRICE" style="width: 45%; height: 60px; font-size: 25px;"/>
 			<br><br>
+			<button class="btn btn-success" tabindex="4" style="width: 45%; height: 60px; font-size: 25px;" onclick="addItemToGrid()">ADD ITEM</button>
 			<button class="btn btn-danger" style="width: 45%; height: 60px; font-size: 25px;">CLEAR ALL</button>
-			<button class="btn btn-success" style="width: 45%; height: 60px; font-size: 25px;" onclick="addItemToGrid()">ADD ITEM</button>
-			
-			
-			
-			
-			
-			
-			
 			
 		</td>
 		

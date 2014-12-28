@@ -41,6 +41,9 @@
 <table border="1" style="width: 100%; height: 400px;"> 
 	<tr> 
 		<td align="center" valign="top">
+		
+		
+		
 			<div id="purchaseTrasactionDiv">
 				
 			</div>
@@ -113,20 +116,20 @@
 			<input type="text" disabled="disabled" value="ITEM CODE" style="width: 45%; height: 20px; font-size: 12px; text-align: center; font-weight: bold;"/>
 			<input type="text" disabled="disabled" value="ITEM" style="width: 45%; height: 20px; font-size: 12px; text-align: center; font-weight: bold;"/>
 			<br>
-			<input type="text" id="itemCode" class="form-control" readonly="readonly" placeholder="ITEM CODE" style="width: 45%; height: 60px; font-size: 25px;"/>
-			<input type="text" id="itemName" class="form-control" readonly="readonly" placeholder="ITEM" style="width: 45%; height: 60px; font-size: 25px;"/>
+			<input type="text" id="itemCode"  readonly="readonly" placeholder="ITEM CODE" style="width: 45%; height: 60px; font-size: 25px;"/>
+			<input type="text" id="itemName"  readonly="readonly" placeholder="ITEM" style="width: 45%; height: 60px; font-size: 25px;"/>
 			<br><br>
 			<input type="text" disabled="disabled" value="QUANTITY" style="width: 45%; height: 20px; font-size: 12px; text-align: center; font-weight: bold;"/>
 			<input type="text" disabled="disabled" value="UOM" style="width: 45%; height: 20px; font-size: 12px; text-align: center; font-weight: bold;"/>
 			<br>
-			<input type="text" id="quantity" class="form-control" placeholder="QUANTITY" tabindex="2" style="width: 45%; height: 60px; font-size: 25px;"/>
-			<input type="text" id="uom" class="form-control" readonly="readonly" placeholder="UOM" style="width: 45%; height: 60px; font-size: 25px;"/>
+			<input type="text" id="quantity"  placeholder="QUANTITY" tabindex="2" style="width: 45%; height: 60px; font-size: 25px;"/>
+			<input type="text" id="uom"  readonly="readonly" placeholder="UOM" style="width: 45%; height: 60px; font-size: 25px;"/>
 			<br><br>
 			<input type="text" disabled="disabled" value="PRICE" style="width: 45%; height: 20px; font-size: 12px; text-align: center; font-weight: bold;"/>
 			<input type="text" disabled="disabled" value="DEFAULT PRICE" style="width: 45%; height: 20px; font-size: 12px; text-align: center; font-weight: bold;"/>
 			<br>
-			<input type="text" id="purchasePrice" class="form-control" placeholder="PRICE" tabindex="3" style="width: 45%; height: 60px; font-size: 25px;"/>
-			<input type="text" id="defaultPrice" class="form-control" readonly="readonly" placeholder="D PRICE" style="width: 45%; height: 60px; font-size: 25px;"/>
+			<input type="text" id="purchasePrice"  placeholder="PRICE" tabindex="3" style="width: 45%; height: 60px; font-size: 25px;"/>
+			<input type="text" id="defaultPrice"  readonly="readonly" placeholder="D PRICE" style="width: 45%; height: 60px; font-size: 25px;"/>
 			<br><br>
 			<button class="btn btn-success" tabindex="4" style="width: 45%; height: 60px; font-size: 25px;" onclick="addItemToGrid()">ADD ITEM</button>
 			<button class="btn btn-danger" style="width: 45%; height: 60px; font-size: 25px;">CLEAR ALL</button>
