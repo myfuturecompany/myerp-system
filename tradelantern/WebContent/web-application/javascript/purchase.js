@@ -14,6 +14,32 @@ function showPurchaseList(){
 	
 }
 
+function findInvoiceNumber(){
+	PurchaseServices.findInvoiceNumber(function(p){
+		$('#invoiceNumber').html(p);
+	});
+		
+}
+
+function savePurchase(){
+	var purchase = new Array();
+	
+	$('#purchaseTrasactionTable > tbody > tr').each(function(index , obj){
+		
+		var purchaseDetail = new Array();
+		
+		$(obj).find('td').each(function(i , td){
+			purchaseDetail.push(td.innerHTML);	
+		});
+		
+		purchase.push( purchaseDetail );
+		
+		
+	});
+	
+	alert( purchase );
+	
+}
 
 function addItemToGrid(){
 	
@@ -106,6 +132,8 @@ function populatePurchaseTrasactionTable() {
 
 function populateItemStockTable(){
 	
+	
+	
 	PurchaseServices.findItemList(function(p){
 			
 			$('#stockDiv').html('<table id="stockTable" class="display master"></table>');
@@ -139,7 +167,7 @@ function populateItemStockTable(){
 	});
 	
 	
-	
+	findInvoiceNumber();
 }
 
 

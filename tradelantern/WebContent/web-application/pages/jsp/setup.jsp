@@ -10,7 +10,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 
 <div role="tabpanel">
-
+<br><br>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
 	<li role="presentation" class="active"><a href="#role" aria-controls="role" role="tab" data-toggle="tab">Role</a></li>

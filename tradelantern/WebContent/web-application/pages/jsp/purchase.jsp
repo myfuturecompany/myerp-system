@@ -36,7 +36,12 @@
 
 </div>
 
-<div id="newPurchaseDiv"  align="center"><br><br>
+<div id="newPurchaseDiv"  align="center">
+<br>
+
+<span id="invoiceNumber" style="float: left;"></span>
+
+<br>
 
 <table border="1" style="width: 100%; height: 400px;"> 
 	<tr> 
@@ -91,13 +96,13 @@
 			<button type="button" class="btn btn-danger btn-sm" style=" width: 24%;" onclick="showPurchaseList()">
 				CANCEL
 			</button>  
-			<button type="button" class="btn btn-primary btn-sm" style=" width: 24%;" onclick="showPurchaseList()">
+			<button type="button" class="btn btn-primary btn-sm" style=" width: 24%;" onclick="savePurchase()">
 				SAVE & PRINT
 			</button>
-			<button type="button" class="btn btn-primary btn-sm" style=" width: 24%;" onclick="showPurchaseList()">
+			<button type="button" class="btn btn-primary btn-sm" style=" width: 24%;" onclick="savePurchase()">
 				SAVE & CREATE NEW
 			</button>  
-			<button type="button" class="btn btn-primary btn-sm" style=" width: 24%;" onclick="showPurchaseList()">
+			<button type="button" class="btn btn-primary btn-sm" style=" width: 24%;" onclick="savePurchase()">
 				SAVE
 			</button>  
 			

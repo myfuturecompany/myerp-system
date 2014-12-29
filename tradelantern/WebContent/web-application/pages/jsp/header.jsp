@@ -22,6 +22,16 @@
 
 
 <div  align="right" style="background-color: black; height: 30px;">
+
+	<div style="float:left; color: white;">Current Location : 
+	<select style="color: black;">
+		<option>LOCATION 1</option>
+	</select></div>
+
+	<div class="header">ADVANCE ELECTRONICS</div>
+</div>
+
+
 	<div class="menu">
 		<s:form action="user"><div onclick="navigate(this)"><span class="glyphicon glyphicon-user"></span> USERS </div> </s:form>
 		<s:form action="purchase"><div onclick="navigate(this)">PURCHASE</div></s:form>
@@ -31,8 +41,7 @@
 		<s:form action="report"><div onclick="navigate(this)">REPORT</div></s:form>
 		<s:form action="setup"><div onclick="navigate(this)">SETUP</div></s:form>
 	</div>
-	<div class="header">ADVANCE ELECTRONICS</div>
-</div>
+
 
 <script type="text/javascript">
 	

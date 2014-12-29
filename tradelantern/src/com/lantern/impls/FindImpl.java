@@ -19,7 +19,7 @@ import com.lantern.utils.Status.LOCATION;
 public class FindImpl {
 
 	private Session session = null;
-	
+
 	public List findAllObject(Class obj ) {
 
 		try {
@@ -56,7 +56,7 @@ public class FindImpl {
 	}
 
 	public RoleMaster findRoleById(int id) {
-		
+
 		try {
 			openConnection();
 			session.beginTransaction();
@@ -160,7 +160,7 @@ public class FindImpl {
 		}
 		return null;
 	}
-	
+
 	public StatusMaster findStatusById(int id) {
 		try {
 			openConnection();
@@ -174,7 +174,7 @@ public class FindImpl {
 		}
 		return null;
 	}
-	
+
 	private void openConnection(){
 		session = HibernateUtils.getSessionFactory().openSession();
 	}
@@ -186,7 +186,7 @@ public class FindImpl {
 
 	public List<Object[]> findItemList() {
 		try {
-			
+
 			openConnection();
 			session.beginTransaction();
 			Query query = session.createQuery("SELECT I.itemCode, I.itemName,  S.availableQty, I.uom , S.purchasePrice FROM ItemMaster I LEFT JOIN I.stocks S");
@@ -203,6 +203,46 @@ public class FindImpl {
 		return null;
 	}
 
-	
+	public Object findMaxPurchaseNumberByLocation(int l) {
+		try {
+
+			openConnection();
+			session.beginTransaction();
+			Query query = session.createQuery("SELECT MAX(P.invoiceNo) FROM PurchaseSummary P WHERE P.locationCd = :l");
+			query.setInteger("l", l);
+			Object results = query.uniqueResult();;
+			return results;
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return null;
+	}
+
+	public Object findMaxSellNumberByLocation(int l) {
+		try {
+
+			openConnection();
+			session.beginTransaction();
+			Query query = session.createQuery("SELECT MAX(S.invoiceNo) FROM SellSummary S WHERE S.locationCd = :l");
+			query.setInteger("l", l);
+			Object results = query.uniqueResult();;
+			return results;
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return null;
+	}
+
+
 
 }
