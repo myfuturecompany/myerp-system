@@ -8,17 +8,20 @@
             <column name="ID" />
             <generator class="assigned" />
         </id>
+        <property name="invoiceNumber" type="java.lang.String">
+            <column name="INVOICE_NO" />
+        </property>
         <property name="netPrice" type="java.math.BigDecimal">
             <column name="NETPRICE" />
         </property>
         <property name="purchaseQty" type="java.math.BigDecimal">
-            <column name="PURCHASEQTY" />
+            <column name="PURCHASE_QTY" />
         </property>
         <property name="transactionDate" type="java.util.Date">
-            <column name="TRANSACTIONDATE" />
+            <column name="TRANSACTION_DATE" />
         </property>
         <property name="unitPrice" type="java.math.BigDecimal">
-            <column name="UNITPRICE" />
+            <column name="UNIT_PRICE" />
         </property>
         <many-to-one name="statusMaster" class="com.lantern.beans.StatusMaster" fetch="join">
             <column name="STATUS_MASTER" />
@@ -30,7 +33,7 @@
             <column name="ITEM_MASTER" />
         </many-to-one>
         <many-to-one name="userDetail" class="com.lantern.beans.UserDetail" fetch="join">
-            <column name="USERDETAIL" />
+            <column name="USER_DETAIL" />
         </many-to-one>
     </class>
 </hibernate-mapping>

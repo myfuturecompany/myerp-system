@@ -8,7 +8,7 @@
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-
+<form action="" enctype="multipart/form-data">
 <div role="tabpanel">
 <br><br>
   <!-- Nav tabs -->
@@ -238,6 +238,9 @@
 	 <!-- ITEM -->
     <div role="tabpanel" class="tab-pane" id="location">
 		<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#itemModal" style="float: right; width: 10%;">NEW ITEM</button>
+		<!-- <input type="file" id="itemList" name="itemList" class="btn btn-primary btn-sm" style="float: left;">&nbsp;&nbsp;
+		 -->
+		<input type="button" class="btn btn-primary btn-sm" value="UPLOAD FILE" onclick="openPopupToUploadFile()" style="float: left; ">
 <br><br>
 	<div id="itemMasterDiv">
 		
@@ -424,7 +427,7 @@ $(window).load(function() {
 });
 </script>
 
-
+</form>
 
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.lantern.impls;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -11,6 +12,7 @@ import org.hibernate.criterion.Restrictions;
 import com.lantern.beans.CustomerMaster;
 import com.lantern.beans.ItemMaster;
 import com.lantern.beans.LocationMaster;
+import com.lantern.beans.PurchaseSummary;
 import com.lantern.beans.RoleMaster;
 import com.lantern.beans.StatusMaster;
 import com.lantern.utils.HibernateUtils;
@@ -122,6 +124,53 @@ public class FindImpl {
 			session.beginTransaction();
 			ItemMaster item = (ItemMaster) session.get(ItemMaster.class, id);
 			return item;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return null;
+	}
+	
+	public ItemMaster findItemByCodeAndName(String itemCode , String itemname) {
+		try {
+			
+			openConnection();
+			Criteria criteria = session.createCriteria(ItemMaster.class);
+			criteria.add(Restrictions.eq("itemCode", itemCode ));
+			criteria.add(Restrictions.eq("itemName", itemname ));
+			criteria.setMaxResults(1);
+			List<ItemMaster> list = criteria.list();
+			if(list != null && list.size() !=0 ){
+				return list.get(0);
+			}else{
+				return null;
+			}
+			
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return null;
+	}
+	
+	
+	public PurchaseSummary findPurchaseSummartByInvoiceAndDate(String invoiceNumber , Date date) {
+		try {
+			
+			openConnection();
+			Criteria criteria = session.createCriteria(PurchaseSummary.class);
+			criteria.add(Restrictions.eq("invoiceNo", invoiceNumber ));
+			criteria.add(Restrictions.eq("transactionDate", date ));
+			criteria.setMaxResults(1);
+			List<PurchaseSummary> list = criteria.list();
+			if(list != null && list.size() !=0 ){
+				return list.get(0);
+			}else{
+				return null;
+			}
+			
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {

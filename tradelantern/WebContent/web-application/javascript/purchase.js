@@ -37,7 +37,18 @@ function savePurchase(){
 		
 	});
 	
-	alert( purchase );
+	var purchaseSummary = new Array();
+
+	purchaseSummary.push( $('#totalParticulars').val() );
+	purchaseSummary.push( $('#totalPrice').val() );
+	purchaseSummary.push( $('#totalDiscount').val() );
+	purchaseSummary.push( $('#totalNetPrice').val() );
+	
+	PurchaseServices.savePurchase(purchase, purchaseSummary , $('#invoiceNumber').html() , function(p){
+		alert(p);
+	});
+	
+	
 	
 }
 

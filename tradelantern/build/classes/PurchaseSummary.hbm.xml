@@ -9,22 +9,22 @@
             <generator class="assigned" />
         </id>
         <property name="invoiceType" type="java.lang.String">
-            <column name="INVOICETYPE" />
+            <column name="INVOICE_TYPE" />
         </property>
         <property name="totalParticulars" type="int">
-            <column name="TOTALPARTICULARS" />
+            <column name="TOTAL_PARTICULARS" />
         </property>
         <property name="totalPriceAfterDisc" type="java.math.BigDecimal">
-            <column name="TOTALPRICEAFTERDISC" />
+            <column name="TOTAL_PRICE_AFTER_DISC" />
         </property>
         <property name="totalPriceBeforeDisc" type="java.math.BigDecimal">
-            <column name="TOTALPRICEBEFOREDISC" />
+            <column name="TOTAL_PRICE_BEFORE_DISC" />
         </property>
         <property name="transactionDate" type="java.util.Date">
-            <column name="TRANSACTIONDATE" />
+            <column name="TRANSACTION_DATE" />
         </property>
         <many-to-one name="customerMaster" class="com.lantern.beans.CustomerMaster" fetch="join">
-            <column name="CUSTOMER_MASTER" />
+            <column name="CUSTOMER_ID" />
         </many-to-one>
         <many-to-one name="locationMaster" class="com.lantern.beans.LocationMaster" fetch="join">
             <column name="LOCATIONMASTER" />
@@ -33,7 +33,7 @@
             <column name="STATUS_MASTER" />
         </many-to-one>
         <many-to-one name="userDetail" class="com.lantern.beans.UserDetail" fetch="join">
-            <column name="USERDETAIL" />
+            <column name="USER_DETAIL" />
         </many-to-one>
         <list name="purchaseTransactions" inverse="false" table="PURCHASE_TRANSACTION" lazy="true">
             <key>

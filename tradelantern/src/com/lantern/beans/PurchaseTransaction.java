@@ -14,6 +14,8 @@ public class PurchaseTransaction implements Serializable {
 
 	private String id;
 	
+	private String invoiceNumber;
+	
 	private BigDecimal netPrice;
 
 	private BigDecimal purchaseQty;
@@ -43,6 +45,18 @@ public class PurchaseTransaction implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+
+
+	public String getInvoiceNumber() {
+		return invoiceNumber;
+	}
+
+
+
+	public void setInvoiceNumber(String invoiceNumber) {
+		this.invoiceNumber = invoiceNumber;
 	}
 
 

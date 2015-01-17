@@ -37,6 +37,12 @@ function saveItem(){
 }
 
 
+function openPopupToUploadFile(){
+
+	window.open("/tradelantern/web-application/pages/jsp/popups/fileuploadforitem.jsp","FileUpload",'height=450,width=600,scrollbars=yes');
+	
+}
+
 
 
 function populateLocationMaster(){

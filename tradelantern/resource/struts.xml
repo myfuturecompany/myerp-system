@@ -53,6 +53,11 @@
 			method="setup">
 			<result name="setup">web-application/pages/jsp/setup.jsp</result>
 		</action>
+		
+		<action name="uploadFile" class="com.lantern.actions.UploadFile"
+			method="uploadFile">
+			<result name="fileUploaded">itemuploadsuccesspage.jsp</result>
+		</action>
 
 	</package>
 </struts>

@@ -45,4 +45,25 @@ public class Status {
 		}
 		
 	}
+	
+public enum PURCHASE {
+		
+		ACTIVE(13),
+		DEACTIVE(14),
+		DELETED(15);
+		
+		int id;
+		PURCHASE(int id){
+			this.id = id;
+		}
+		public int getId(){
+			return this.id;
+		}
+		
+		public StatusMaster getStatus(){
+			FindImpl impl = new FindImpl();
+			return impl.findStatusById(id);
+		}
+		
+	}
 }
