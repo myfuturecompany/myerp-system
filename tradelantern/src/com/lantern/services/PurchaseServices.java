@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.json.JSONArray;
 
@@ -70,6 +71,9 @@ public class PurchaseServices {
 		PurchaseTransaction transaction = null;
 		for (int i = 0; i < purchase.length; i++) {
 			transaction = new PurchaseTransaction();
+			
+			transaction.setId(invoiceNumber+"_"+UUID.randomUUID().toString().substring(1, 6));
+			
 			transaction.setItemMaster( findImpl.findItemByCodeAndName(purchase[i][0], purchase[i][1]) );
 			transaction.setPurchaseQty(  new BigDecimal(purchase[i][2]) );
 			transaction.setUnitPrice( new BigDecimal(purchase[i][4]) );
@@ -78,9 +82,8 @@ public class PurchaseServices {
 			transaction.setTransactionDate(date);
 			transaction.setStatusMaster( status );
 			
-			transaction.setInvoiceNumber(invoiceNumber);
+			transaction.setInvoiceNumber( findImpl.findPurchaseSummartByInvoiceAndDate(invoiceNumber, date) );
 			
-			transaction.setPurchaseSummary( findImpl.findPurchaseSummartByInvoiceAndDate(invoiceNumber, date) );
 			
 			saveImpl.save(transaction);
 			transaction = null;

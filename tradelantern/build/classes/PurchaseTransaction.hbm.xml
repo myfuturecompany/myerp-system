@@ -8,11 +8,9 @@
             <column name="ID" />
             <generator class="assigned" />
         </id>
-        <property name="invoiceNumber" type="java.lang.String">
-            <column name="INVOICE_NO" />
-        </property>
+        
         <property name="netPrice" type="java.math.BigDecimal">
-            <column name="NETPRICE" />
+            <column name="NET_PRICE" />
         </property>
         <property name="purchaseQty" type="java.math.BigDecimal">
             <column name="PURCHASE_QTY" />
@@ -24,16 +22,16 @@
             <column name="UNIT_PRICE" />
         </property>
         <many-to-one name="statusMaster" class="com.lantern.beans.StatusMaster" fetch="join">
-            <column name="STATUS_MASTER" />
+            <column name="STATUS" />
         </many-to-one>
-        <many-to-one name="purchaseSummary" class="com.lantern.beans.PurchaseSummary" fetch="join">
-            <column name="PURCHASE_SUMMARY" />
+        <many-to-one name="invoiceNumber" class="com.lantern.beans.PurchaseSummary" fetch="join">
+            <column name="INVOICE_NO" />
         </many-to-one>
         <many-to-one name="itemMaster" class="com.lantern.beans.ItemMaster" fetch="join">
-            <column name="ITEM_MASTER" />
+            <column name="ITEM" />
         </many-to-one>
         <many-to-one name="userDetail" class="com.lantern.beans.UserDetail" fetch="join">
-            <column name="USER_DETAIL" />
+            <column name="USER_ID" />
         </many-to-one>
     </class>
 </hibernate-mapping>

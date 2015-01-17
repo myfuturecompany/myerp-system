@@ -5,7 +5,7 @@
 <hibernate-mapping>
     <class name="com.lantern.beans.PurchaseSummary" table="PURCHASE_SUMMARY">
         <id name="invoiceNo" type="java.lang.String">
-            <column name="INVOICENO" />
+            <column name="INVOICE_NO" />
             <generator class="assigned" />
         </id>
         <property name="invoiceType" type="java.lang.String">
@@ -27,13 +27,13 @@
             <column name="CUSTOMER_ID" />
         </many-to-one>
         <many-to-one name="locationMaster" class="com.lantern.beans.LocationMaster" fetch="join">
-            <column name="LOCATIONMASTER" />
+            <column name="LOCATION_CD" />
         </many-to-one>
         <many-to-one name="statusMaster" class="com.lantern.beans.StatusMaster" fetch="join">
-            <column name="STATUS_MASTER" />
+            <column name="STATUS" />
         </many-to-one>
         <many-to-one name="userDetail" class="com.lantern.beans.UserDetail" fetch="join">
-            <column name="USER_DETAIL" />
+            <column name="USER_ID" />
         </many-to-one>
         <list name="purchaseTransactions" inverse="false" table="PURCHASE_TRANSACTION" lazy="true">
             <key>

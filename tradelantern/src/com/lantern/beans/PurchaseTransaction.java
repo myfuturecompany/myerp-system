@@ -14,7 +14,7 @@ public class PurchaseTransaction implements Serializable {
 
 	private String id;
 	
-	private String invoiceNumber;
+	private PurchaseSummary invoiceNumber;
 	
 	private BigDecimal netPrice;
 
@@ -25,8 +25,6 @@ public class PurchaseTransaction implements Serializable {
 	private BigDecimal unitPrice;
 
 	private StatusMaster statusMaster;
-
-	private PurchaseSummary purchaseSummary;
 
 	private ItemMaster itemMaster;
 
@@ -49,13 +47,13 @@ public class PurchaseTransaction implements Serializable {
 
 
 
-	public String getInvoiceNumber() {
+	public PurchaseSummary getInvoiceNumber() {
 		return invoiceNumber;
 	}
 
 
 
-	public void setInvoiceNumber(String invoiceNumber) {
+	public void setInvoiceNumber(PurchaseSummary invoiceNumber) {
 		this.invoiceNumber = invoiceNumber;
 	}
 
@@ -101,13 +99,7 @@ public class PurchaseTransaction implements Serializable {
 		this.statusMaster = statusMaster;
 	}
 
-	public PurchaseSummary getPurchaseSummary() {
-		return this.purchaseSummary;
-	}
-
-	public void setPurchaseSummary(PurchaseSummary purchaseSummary) {
-		this.purchaseSummary = purchaseSummary;
-	}
+	
 
 	public ItemMaster getItemMaster() {
 		return this.itemMaster;

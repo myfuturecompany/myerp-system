@@ -123,14 +123,14 @@ public class PurchaseSummary implements Serializable {
 
 	public PurchaseTransaction addPurchaseTransaction(PurchaseTransaction purchaseTransaction) {
 		getPurchaseTransactions().add(purchaseTransaction);
-		purchaseTransaction.setPurchaseSummary(this);
+		purchaseTransaction.setInvoiceNumber(this);
 
 		return purchaseTransaction;
 	}
 
 	public PurchaseTransaction removePurchaseTransaction(PurchaseTransaction purchaseTransaction) {
 		getPurchaseTransactions().remove(purchaseTransaction);
-		purchaseTransaction.setPurchaseSummary(null);
+		purchaseTransaction.setInvoiceNumber(null);
 
 		return purchaseTransaction;
 	}
