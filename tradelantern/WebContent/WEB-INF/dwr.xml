@@ -20,6 +20,10 @@
       <param name="class" value="com.lantern.services.PurchaseServices"/>
     </create>
     
+    <create creator="new" javascript="SalesServices">
+      <param name="class" value="com.lantern.services.SalesServices"/>
+    </create>
+    
     <convert converter="bean" match="com.lantern.beans.*"/>
     
   </allow>

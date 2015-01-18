@@ -66,4 +66,25 @@ public enum PURCHASE {
 		}
 		
 	}
+
+public enum SELL {
+	
+	ACTIVE(16),
+	DEACTIVE(17),
+	DELETED(18);
+	
+	int id;
+	SELL(int id){
+		this.id = id;
+	}
+	public int getId(){
+		return this.id;
+	}
+	
+	public StatusMaster getStatus(){
+		FindImpl impl = new FindImpl();
+		return impl.findStatusById(id);
+	}
+	
+}
 }

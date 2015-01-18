@@ -9,31 +9,31 @@
             <generator class="assigned" />
         </id>
         <property name="netPrice" type="java.math.BigDecimal">
-            <column name="NETPRICE" />
+            <column name="NET_PRICE" />
         </property>
         <property name="sellQty" type="java.math.BigDecimal">
-            <column name="SELLQTY" />
+            <column name="SELL_QTY" />
         </property>
         <property name="transactionDate" type="java.util.Date">
-            <column name="TRANSACTIONDATE" />
+            <column name="TRANSACTION_DATE" />
         </property>
         <property name="unitPrice" type="java.math.BigDecimal">
-            <column name="UNITPRICE" />
+            <column name="UNIT_PRICE" />
         </property>
         <many-to-one name="statusMaster" class="com.lantern.beans.StatusMaster" fetch="join">
-            <column name="STATUS_MASTER" />
+            <column name="STATUS" />
         </many-to-one>
         <many-to-one name="sellSummary" class="com.lantern.beans.SellSummary" fetch="join">
-            <column name="SELL_SUMMARY" />
+            <column name="INVOICE_NO" />
         </many-to-one>
         <many-to-one name="itemMaster" class="com.lantern.beans.ItemMaster" fetch="join">
-            <column name="ITEM_MASTER" />
+            <column name="ITEM" />
         </many-to-one>
         <many-to-one name="locationMaster" class="com.lantern.beans.LocationMaster" fetch="join">
-            <column name="LOCATIONMASTER" />
+            <column name="LOCATION_ID" />
         </many-to-one>
         <many-to-one name="userDetail" class="com.lantern.beans.UserDetail" fetch="join">
-            <column name="USERDETAIL" />
+            <column name="USER_ID" />
         </many-to-one>
     </class>
 </hibernate-mapping>

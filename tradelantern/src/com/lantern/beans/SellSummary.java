@@ -29,9 +29,7 @@ public class SellSummary implements Serializable {
 
 	private LocationMaster locationMaster;
 
-	private StatusMaster statusMaster1;
-
-	private StatusMaster statusMaster2;
+	private StatusMaster statusMaster;
 
 	private UserDetail userDetail;
 
@@ -104,20 +102,13 @@ public class SellSummary implements Serializable {
 		this.locationMaster = locationMaster;
 	}
 
-	public StatusMaster getStatusMaster1() {
-		return this.statusMaster1;
+	
+	public StatusMaster getStatusMaster() {
+		return statusMaster;
 	}
 
-	public void setStatusMaster1(StatusMaster statusMaster1) {
-		this.statusMaster1 = statusMaster1;
-	}
-
-	public StatusMaster getStatusMaster2() {
-		return this.statusMaster2;
-	}
-
-	public void setStatusMaster2(StatusMaster statusMaster2) {
-		this.statusMaster2 = statusMaster2;
+	public void setStatusMaster(StatusMaster statusMaster) {
+		this.statusMaster = statusMaster;
 	}
 
 	public UserDetail getUserDetail() {

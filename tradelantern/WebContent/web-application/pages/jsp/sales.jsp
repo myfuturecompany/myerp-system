@@ -17,31 +17,39 @@
 </style>
 
 </head>
-<body onload="populateItemStockTable();populatePurchaseTrasactionTable()"> 
+<body onload="populateItemStockTable();populateSellTrasactionTable()"> 
 <jsp:include page="header.jsp"></jsp:include>
 
-<script src="<%=request.getContextPath() %>/web-application/javascript/purchase.js"	type="text/javascript"></script>
-<script src="<%=request.getContextPath() %>/dwr/interface/PurchaseServices.js"	type="text/javascript"></script>
+<script src="<%=request.getContextPath() %>/web-application/javascript/sales.js"	type="text/javascript"></script>
+<script src="<%=request.getContextPath() %>/dwr/interface/SalesServices.js"	type="text/javascript"></script>
 
 <!-- <div style="text-align: center;" class="alert alert-primary">PURCHASE BILL</div> -->
 
-<div id="purchaseSummaryListDiv" style="display: none;">
+<div id="sellSummaryListDiv" style="display: none;">
 	<br>
-	<button type="button" class="btn btn-primary btn-sm" style="float: right; width: 10%;" onclick="showNewPurchaseDiv()">
-		NEW PURCHASE
+	<button type="button" class="btn btn-primary btn-sm" style="float: right; width: 10%;" onclick="showNewSellDiv()">
+		NEW SALE
 	</button>    
    	<br><br>
-    PURCHASE LIST
-    <table id="purchaseSummaryTable" class="display master"></table>
+    SALES LIST
+    <table id="sellSummaryTable" class="display master"></table>
 
 </div>
 
-<div id="newPurchaseDiv"  align="center"><br><br>
+<div id="newSellDiv"  align="center">
+<br>
+
+<span id="invoiceNumber" style="float: left;"></span>
+
+<br>
 
 <table border="1" style="width: 100%; height: 400px;"> 
 	<tr> 
 		<td align="center" valign="top">
-			<div id="purchaseTrasactionDiv">
+		
+		
+		
+			<div id="sellTrasactionDiv">
 				
 			</div>
 			<br>
@@ -85,19 +93,18 @@
 			
 			<br><br>
 			
-			<button type="button" class="btn btn-danger btn-sm" style=" width: 24%;" onclick="showPurchaseList()">
+			<button type="button" class="btn btn-danger btn-sm" style=" width: 24%;" onclick="showSellList()">
 				CANCEL
 			</button>  
-			<button type="button" class="btn btn-primary btn-sm" style=" width: 24%;" onclick="showPurchaseList()">
+			<button type="button" class="btn btn-primary btn-sm" style=" width: 24%;" onclick="saveSell('SAVEANDPRINT')">
 				SAVE & PRINT
 			</button>
-			<button type="button" class="btn btn-primary btn-sm" style=" width: 24%;" onclick="showPurchaseList()">
+			<button type="button" class="btn btn-primary btn-sm" style=" width: 24%;" onclick="saveSell('SAVEANDNEW')">
 				SAVE & CREATE NEW
 			</button>  
-			<button type="button" class="btn btn-primary btn-sm" style=" width: 24%;" onclick="showPurchaseList()">
+			<button type="button" class="btn btn-primary btn-sm" style=" width: 24%;" onclick="saveSell('SAVE')">
 				SAVE
-			</button>  
-			
+			</button> 
 		</td>
 			
 		<td width="25%" valign="top">
@@ -125,7 +132,7 @@
 			<input type="text" disabled="disabled" value="PRICE" style="width: 45%; height: 20px; font-size: 12px; text-align: center; font-weight: bold;"/>
 			<input type="text" disabled="disabled" value="DEFAULT PRICE" style="width: 45%; height: 20px; font-size: 12px; text-align: center; font-weight: bold;"/>
 			<br>
-			<input type="text" id="purchasePrice"  placeholder="PRICE" tabindex="3" style="width: 45%; height: 60px; font-size: 25px;"/>
+			<input type="text" id="sellPrice"  placeholder="PRICE" tabindex="3" style="width: 45%; height: 60px; font-size: 25px;"/>
 			<input type="text" id="defaultPrice"  readonly="readonly" placeholder="D PRICE" style="width: 45%; height: 60px; font-size: 25px;"/>
 			<br><br>
 			<button class="btn btn-success" tabindex="4" style="width: 45%; height: 60px; font-size: 25px;" onclick="addItemToGrid()">ADD ITEM</button>
@@ -144,9 +151,9 @@
 
 
 
-<!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#purchaseTransactionModal" >Show Details</button>
+<!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#sellTransactionModal" >Show Details</button>
  -->
-<div class="modal fade" id="purchaseTransactionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="sellTransactionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -155,7 +162,7 @@
 						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 					</button>
 					
-					<h4 class="modal-title" id="purchaseTransactionModalLabel">INVOICE NO</h4>
+					<h4 class="modal-title" id="sellTransactionModalLabel">INVOICE NO</h4>
 				</div>
 				
 				<div class="modal-body">

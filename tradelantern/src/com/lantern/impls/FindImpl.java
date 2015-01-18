@@ -14,6 +14,7 @@ import com.lantern.beans.ItemMaster;
 import com.lantern.beans.LocationMaster;
 import com.lantern.beans.PurchaseSummary;
 import com.lantern.beans.RoleMaster;
+import com.lantern.beans.SellSummary;
 import com.lantern.beans.StatusMaster;
 import com.lantern.utils.HibernateUtils;
 import com.lantern.utils.Status.LOCATION;
@@ -131,10 +132,10 @@ public class FindImpl {
 		}
 		return null;
 	}
-	
+
 	public ItemMaster findItemByCodeAndName(String itemCode , String itemname) {
 		try {
-			
+
 			openConnection();
 			Criteria criteria = session.createCriteria(ItemMaster.class);
 			criteria.add(Restrictions.eq("itemCode", itemCode ));
@@ -146,7 +147,7 @@ public class FindImpl {
 			}else{
 				return null;
 			}
-			
+
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
@@ -154,11 +155,11 @@ public class FindImpl {
 		}
 		return null;
 	}
-	
-	
+
+
 	public PurchaseSummary findPurchaseSummartByInvoiceAndDate(String invoiceNumber , Date date) {
 		try {
-			
+
 			openConnection();
 			Criteria criteria = session.createCriteria(PurchaseSummary.class);
 			criteria.add(Restrictions.eq("invoiceNo", invoiceNumber ));
@@ -170,7 +171,7 @@ public class FindImpl {
 			}else{
 				return null;
 			}
-			
+
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
@@ -277,14 +278,37 @@ public class FindImpl {
 
 			openConnection();
 			session.beginTransaction();
-			Query query = session.createQuery("SELECT MAX(S.invoiceNo) FROM SellSummary S WHERE S.locationCd = :l");
+			Query query = session.createQuery("SELECT MAX(S.invoiceNo) FROM SellSummary S WHERE S.locationMaster = :l");
 			query.setInteger("l", l);
-			Object results = query.uniqueResult();;
+			Object results = query.uniqueResult();
 			return results;
 
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return null;
+	}
+
+	public SellSummary findSellSummartByInvoiceAndDate(String invoiceNumber, Date date) {
+		try {
+
+			openConnection();
+			Criteria criteria = session.createCriteria(SellSummary.class);
+			criteria.add(Restrictions.eq("invoiceNo", invoiceNumber ));
+			criteria.add(Restrictions.eq("transactionDate", date ));
+			criteria.setMaxResults(1);
+			List<SellSummary> list = criteria.list();
+			if(list != null && list.size() !=0 ){
+				return list.get(0);
+			}else{
+				return null;
+			}
+
+		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
 			closeConnection();
