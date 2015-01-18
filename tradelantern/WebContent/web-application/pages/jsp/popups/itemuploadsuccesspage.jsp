@@ -26,17 +26,17 @@
 			<table width="80%" border="1">
 				<tr><td>NEW ITEMS</td><td>UPDATED ITEMS</td><td>FAILED ITEMS</td></tr>
 				<tr>
-					<td>
+					<td valign="top">
 						<s:iterator id="itr" value="addedItem">
 						  <s:property value="itr"/><br>
 						</s:iterator>
 					</td>
-					<td>
+					<td valign="top">
 						<s:iterator id="itr" value="updatedItem">
 						 <s:property value="itr"/><br>
 						</s:iterator>
 					</td>
-					<td>
+					<td valign="top">
 						<s:iterator id="itr" value="failedItem">
 						  <s:property value="itr"/><br>
 						</s:iterator>

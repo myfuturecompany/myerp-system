@@ -99,26 +99,35 @@ public class MasterServices {
 
 
 	public String findAllItems(){
-		FindImpl impl = new FindImpl();	
-		List<ItemMaster> items = impl.findAllItems();
+		JSONArray itemList = null;
+		try {
+			FindImpl impl = new FindImpl();	
+			List<ItemMaster> items = impl.findAllItems();
 
-		
-		JSONArray itemList = new JSONArray();
-		
-		for ( ItemMaster item : items) {
-			JSONArray itm = new JSONArray();
 			
-			itm.put( item.getId() );
-			itm.put( item.getBarcode() );
-			itm.put( item.getItemCode() );
-			itm.put( item.getItemName() );
-			itm.put( item.getUom() );
-			itm.put( item.getStatusMaster().getName() );
-			itemList.put(itm);
+			itemList = new JSONArray();
 			
+			for ( ItemMaster item : items) {
+				JSONArray itm = new JSONArray();
+				
+				itm.put( item.getId() );
+				itm.put( item.getBarcode() );
+				itm.put( item.getItemCode() );
+				itm.put( item.getItemName() );
+				itm.put( item.getUom() );
+				itm.put( item.getStatusMaster().getName() );
+				itemList.put(itm);
+				
+			}
+			
+			items = null;
+			return itemList.toString();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return null;
 		
-		return itemList.toString();
+		
 	}
 
 	public String findItemById(int id){

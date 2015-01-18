@@ -138,19 +138,35 @@ public class UploadFile extends ActionSupport{
 					if(itemId == null || itemId == 0){
 						
 						String itemCode = getCellValue(row.getCell(itemCodeIndex)).toString();
-						if("".equalsIgnoreCase(itemCode)){
-							itemCode = null;
+						if(itemCode == null || "".equalsIgnoreCase(itemCode)){
+							itemCode = uuid.substring( uuid.length() - 4 );
+						}
+						
+						
+						String itemStockValue = getCellValue(row.getCell(itemStockIndex)).toString();
+						if(itemStockValue == null || "".equalsIgnoreCase(itemStockValue)){
+							itemStockValue = "0";
+						}
+						
+						String itemPurchaseValue = getCellValue(row.getCell(itemPurchaseIndex)).toString();
+						if(itemPurchaseValue == null || "".equalsIgnoreCase(itemPurchaseValue)){
+							itemPurchaseValue = "0";
+						}
+						
+						String itemSellValue = getCellValue(row.getCell(itemSellIndex)).toString();
+						if(itemSellValue == null || "".equalsIgnoreCase(itemSellValue)){
+							itemSellValue = "0";
 						}
 						
 						Object[] params = {
 								itemId , 
-								itemName.substring(0, 1) + new Date().getTime() + item.getItemCode().charAt(0) ,
+								itemName.substring(0, 1) + new Date().getTime() + itemCode.charAt(0) ,
 								itemCode,
 								getCellValue(row.getCell(itemNameIndex)).toString() +" : "+ getCellValue(row.getCell(itemDescriptionIndex)).toString(),
 								getCellValue(row.getCell(itemUomIndex)).toString(),
-								new BigDecimal(getCellValue(row.getCell(itemStockIndex)).toString()),
-								new BigDecimal(getCellValue(row.getCell(itemPurchaseIndex)).toString()),
-								new BigDecimal(getCellValue(row.getCell(itemSellIndex)).toString()),
+								new BigDecimal(itemStockValue),
+								new BigDecimal(itemPurchaseValue),
+								new BigDecimal(itemSellValue),
 								2
 						};
 						
