@@ -9,6 +9,9 @@ function showNewSellDiv(){
 }
 
 function showSellList(){
+	
+	sellSummaryList();
+	
 	$('#newSellDiv').hide(500);
 	$('#sellSummaryListDiv').show(500);
 	
@@ -20,6 +23,32 @@ function findInvoiceNumber(){
 	});
 		
 }
+
+function sellSummaryList(){
+	
+	$('#sellSummaryDiv').html('');
+	$('<table id="sellSummaryTable" class="display master"></table>').appendTo('#sellSummaryDiv')
+	
+	SalesServices.findSellSummaryList(function(p){
+		var sellSummary = JSON.parse(p);
+		odatatable = $('#sellSummaryTable').dataTable( {
+	    	"data": sellSummary,
+	    	"language": {
+	            "emptyTable":"No Items Added"
+	        },
+	        "columns": [
+	            {"title":"DATE", "data": "invoiceDate" },
+	            {"title":"INVOICE NUMBER", "data": "invoiceNumber" },
+	            {"title":"TOTAL PARTICULAR", "data": "totalParticular" },
+	            {"title":"TOTAL NET PRICE", "data": "netPrice" },
+	            {"title":"TOTAL DISCOUNT", "data": "discount" },
+	            {"title":"TOTAL SALE", "data": "totalSale" },
+	            {"title":"ACTION", "data": "actionBtn" }
+	        ]
+	    } );
+	});
+}
+
 
 function saveSell(saveAction){
 	var sell = new Array();

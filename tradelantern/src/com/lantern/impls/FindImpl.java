@@ -316,6 +316,23 @@ public class FindImpl {
 		return null;
 	}
 
+	public List<SellSummary> findSellSummaryList() {
+		try {
+			
+			openConnection();
+			Criteria criteria = session.createCriteria(SellSummary.class);
+			List<SellSummary> list = criteria.list();
+			return list;
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+
+		return null;
+	}
+
 
 
 }

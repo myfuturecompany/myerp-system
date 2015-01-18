@@ -31,8 +31,8 @@
 		NEW SALE
 	</button>    
    	<br><br>
-    SALES LIST
-    <table id="sellSummaryTable" class="display master"></table>
+
+    <div id="sellSummaryDiv"></div>
 
 </div>
 

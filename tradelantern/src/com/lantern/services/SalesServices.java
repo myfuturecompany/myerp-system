@@ -3,10 +3,13 @@ package com.lantern.services;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.lantern.beans.SellSummary;
 import com.lantern.beans.SellTransaction;
@@ -27,7 +30,41 @@ public class SalesServices {
 		return arr.toString();
 
 	}
+	
+	
+	public String findSellSummaryList(){
 
+		JSONArray arr;
+		try {
+			FindImpl impl = new FindImpl();
+			List<SellSummary> sellList = impl.findSellSummaryList();
+
+			arr = new JSONArray();
+			
+			for (SellSummary summary : sellList) {
+			
+				JSONObject object = new JSONObject();
+				object.put("invoiceDate", summary.getTransactionDate());
+				object.put("invoiceNumber", summary.getInvoiceNo());
+				object.put("totalParticular", summary.getTotalParticular());
+				object.put("netPrice", summary.getTotalPriceBeforeDisc());
+				object.put("discount", summary.getTotalPriceBeforeDisc().subtract(summary.getTotalPriceAfterDisc()) );
+				object.put("totalSale", summary.getTotalPriceAfterDisc());
+				object.put("actionBtn", "<button class='btn btn-sm btn-success' onclick=\"viewDetails('"+summary.getInvoiceNo()+"')\">Details</button>");
+				arr.put(object);
+			}
+			
+			
+			return arr.toString();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+	
+	
+	
 	public String findInvoiceNumber(){
 
 		int location = 2 ; 
