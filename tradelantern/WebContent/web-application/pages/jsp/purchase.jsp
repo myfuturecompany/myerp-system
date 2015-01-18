@@ -96,16 +96,15 @@
 			<button type="button" class="btn btn-danger btn-sm" style=" width: 24%;" onclick="showPurchaseList()">
 				CANCEL
 			</button>  
-			<button type="button" class="btn btn-primary btn-sm" style=" width: 24%;" onclick="savePurchase()">
+			<button type="button" class="btn btn-primary btn-sm" style=" width: 24%;" onclick="savePurchase('SAVEANDPRINT')">
 				SAVE & PRINT
 			</button>
-			<button type="button" class="btn btn-primary btn-sm" style=" width: 24%;" onclick="savePurchase()">
+			<button type="button" class="btn btn-primary btn-sm" style=" width: 24%;" onclick="savePurchase('SAVEANDNEW')">
 				SAVE & CREATE NEW
 			</button>  
-			<button type="button" class="btn btn-primary btn-sm" style=" width: 24%;" onclick="savePurchase()">
+			<button type="button" class="btn btn-primary btn-sm" style=" width: 24%;" onclick="savePurchase('SAVE')">
 				SAVE
-			</button>  
-			
+			</button> 
 		</td>
 			
 		<td width="25%" valign="top">

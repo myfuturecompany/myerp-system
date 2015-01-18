@@ -257,9 +257,9 @@ public class FindImpl {
 
 			openConnection();
 			session.beginTransaction();
-			Query query = session.createQuery("SELECT MAX(P.invoiceNo) FROM PurchaseSummary P WHERE P.locationCd = :l");
+			Query query = session.createQuery("SELECT MAX(P.invoiceNo) FROM PurchaseSummary P WHERE P.locationMaster.id = :l");
 			query.setInteger("l", l);
-			Object results = query.uniqueResult();;
+			Object results = query.uniqueResult();
 			return results;
 
 		} catch (HibernateException e) {

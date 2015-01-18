@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import org.json.JSONArray;
 
+import com.lantern.beans.LocationMaster;
 import com.lantern.beans.PurchaseSummary;
 import com.lantern.beans.PurchaseTransaction;
 import com.lantern.beans.StatusMaster;
@@ -31,7 +32,7 @@ public class PurchaseServices {
 
 	public String findInvoiceNumber(){
 
-		int location = 0 ; 
+		int location = 2 ; 
 
 		FindImpl impl = new FindImpl();
 		Object maxInvoice = impl.findMaxPurchaseNumberByLocation(location);
@@ -41,7 +42,7 @@ public class PurchaseServices {
 			SimpleDateFormat dt = new SimpleDateFormat("yyyyMMdd");
 			return "P"+dt.format(date)+"L"+location+"-0";
 		}
-		return maxInvoice.toString().split("-")[0] +  (Integer.parseInt(maxInvoice.toString().split("-")[0]) + 1);
+		return maxInvoice.toString().split("-")[0] + "-"+ (Integer.parseInt(maxInvoice.toString().split("-")[1]) + 1);
 	}
 	
 	
@@ -66,6 +67,8 @@ public class PurchaseServices {
 		purchaseSummary.setTransactionDate(date);
 		purchaseSummary.setStatusMaster( status );
 		
+		purchaseSummary.setLocationMaster(findImpl.findLocationById(2));
+		
 		saveImpl.save(purchaseSummary);
 		
 		PurchaseTransaction transaction = null;
@@ -83,7 +86,6 @@ public class PurchaseServices {
 			transaction.setStatusMaster( status );
 			
 			transaction.setInvoiceNumber( findImpl.findPurchaseSummartByInvoiceAndDate(invoiceNumber, date) );
-			
 			
 			saveImpl.save(transaction);
 			transaction = null;

@@ -132,6 +132,10 @@ public class MasterServices {
 		try {
 			SaveImpl impl = new SaveImpl();
 
+			Object[] params = {"TEST" ,  "ITS WORKING"};
+			impl.executeSP("SOMETHING", params);
+			
+			
 			item.setBarcode( item.getItemName().substring(0, 1) + new Date().getTime() + item.getItemCode().charAt(0));
 			item.setStatusMaster( ITEM.ACTIVE.getStatus() );
 			

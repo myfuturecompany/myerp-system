@@ -3,6 +3,7 @@ package com.lantern.actions;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -50,7 +51,7 @@ public class UploadFile extends ActionSupport{
 		/* Copy file to a safe location */
 		File destFile;
 
-		int itemIdIndex = 0, itemCodeIndex = 0, itemNameIndex = 0, itemDescriptionIndex = 0, itemUomIndex = 0;
+		int itemIdIndex = 0, itemCodeIndex = 0, itemNameIndex = 0, itemDescriptionIndex = 0, itemUomIndex = 0, itemStockIndex = 0, itemPurchaseIndex = 0 , itemSellIndex = 0;
 		addedItem = new ArrayList<String>();
 		updatedItem = new ArrayList<String>();
 		failedItem = new ArrayList<String>();
@@ -97,6 +98,12 @@ public class UploadFile extends ActionSupport{
 						itemDescriptionIndex = index;
 					}else if("UOM".equalsIgnoreCase(value.toString())){
 						itemUomIndex = index;
+					}else if("STOCK QUANTITY".equalsIgnoreCase(value.toString())){
+						itemStockIndex = index;
+					}else if("PURCHASE PRICE".equalsIgnoreCase(value.toString())){
+						itemPurchaseIndex = index;
+					}else if("SELL PRICE".equalsIgnoreCase(value.toString())){
+						itemSellIndex = index;
 					}
 					
 					index++;
@@ -129,22 +136,28 @@ public class UploadFile extends ActionSupport{
 					
 					uuid = UUID.randomUUID().toString();
 					if(itemId == null || itemId == 0){
-						//NEW ITEM
-						item = new ItemMaster();
-
-						item.setItemCode(getCellValue(row.getCell(itemCodeIndex)).toString());
 						
-						if(item.getItemCode() == null || "".equalsIgnoreCase(item.getItemCode())){
-							item.setItemCode( uuid.substring( uuid.length() - 4 ) );
+						String itemCode = getCellValue(row.getCell(itemCodeIndex)).toString();
+						if("".equalsIgnoreCase(itemCode)){
+							itemCode = null;
 						}
-
-						item.setItemName(getCellValue(row.getCell(itemNameIndex)).toString() +" : "+ getCellValue(row.getCell(itemDescriptionIndex)).toString());
-						item.setUom(getCellValue(row.getCell(itemUomIndex)).toString());
-
-						item.setBarcode( itemName.substring(0, 1) + new Date().getTime() + item.getItemCode().charAt(0) );
-						item.setStatusMaster(ITEM.ACTIVE.getStatus());
-
-						String result = impl.save(item);
+						
+						Object[] params = {
+								itemId , 
+								itemName.substring(0, 1) + new Date().getTime() + item.getItemCode().charAt(0) ,
+								itemCode,
+								getCellValue(row.getCell(itemNameIndex)).toString() +" : "+ getCellValue(row.getCell(itemDescriptionIndex)).toString(),
+								getCellValue(row.getCell(itemUomIndex)).toString(),
+								new BigDecimal(getCellValue(row.getCell(itemStockIndex)).toString()),
+								new BigDecimal(getCellValue(row.getCell(itemPurchaseIndex)).toString()),
+								new BigDecimal(getCellValue(row.getCell(itemSellIndex)).toString()),
+								2
+						};
+						
+						
+						
+						String spName = "CALL INS_ITEM_DETAILS( ?,?,?,?,?,?,?,?,? )";
+						String result = impl.executeSP(spName , params);
 
 						if(SaveImpl.SUCCESS.equalsIgnoreCase(result)){
 							System.out.println(itemName+" : Successfully added to system");
@@ -161,17 +174,27 @@ public class UploadFile extends ActionSupport{
 						
 						
 						
-						item = findImpl.findItemById(itemId);
-						
-						item.setItemCode(getCellValue(row.getCell(itemCodeIndex)).toString());
-						if(item.getItemCode() == null || "".equalsIgnoreCase(item.getItemCode())){
-							item.setItemCode( uuid.substring( uuid.length() - 4 ) );
+						String itemCode = getCellValue(row.getCell(itemCodeIndex)).toString();
+						if("".equalsIgnoreCase(itemCode)){
+							itemCode = null;
 						}
 						
-						item.setItemName(getCellValue(row.getCell(itemNameIndex)).toString() +" : "+ getCellValue(row.getCell(itemDescriptionIndex)).toString());
-						item.setUom(getCellValue(row.getCell(itemUomIndex)).toString());
-
-						String result = impl.update(item);
+						Object[] params = {
+								itemId , 
+								itemName.substring(0, 1) + new Date().getTime() + item.getItemCode().charAt(0) ,
+								itemCode,
+								getCellValue(row.getCell(itemNameIndex)).toString() +" : "+ getCellValue(row.getCell(itemDescriptionIndex)).toString(),
+								getCellValue(row.getCell(itemUomIndex)).toString(),
+								new BigDecimal(getCellValue(row.getCell(itemStockIndex)).toString()),
+								new BigDecimal(getCellValue(row.getCell(itemPurchaseIndex)).toString()),
+								new BigDecimal(getCellValue(row.getCell(itemSellIndex)).toString()),
+								2
+						};
+						
+						
+						
+						String spName = "CALL INS_ITEM_DETAILS( ?,?,?,?,?,?,?,?,? )";
+						String result = impl.executeSP(spName , params);
 
 						if(SaveImpl.SUCCESS.equalsIgnoreCase(result)){
 							System.out.println(itemName+" : Successfully added to system");
@@ -196,9 +219,26 @@ public class UploadFile extends ActionSupport{
 			updatedItemCount = updatedItem.size();
 			failedItemCount = failedItem.size();
 			
-			System.out.println("Total number of item added : "+addedItem.size());
-			System.out.println("Total number of item updated : "+updatedItem.size());
-			System.out.println("Total number of item failed to add/update : "+failedItem.size());
+			System.out.println("Total number of item added : "+addedItemCount);
+			System.out.println("Total number of item updated : "+updatedItemCount);
+			System.out.println("Total number of item failed to add/update : "+failedItemCount);
+			
+			System.out.println("**************************************NEW ITEMS*******************************************************");
+			
+			for (String fItem : addedItem) {
+				System.out.println(fItem);
+			}
+			
+			System.out.println("*****************************************END*************************************************************");
+			
+            System.out.println("**************************************UPDATED ITEMS*******************************************************");
+			
+			for (String fItem : updatedItem) {
+				System.out.println(fItem);
+			}
+			
+			System.out.println("*****************************************END*************************************************************");
+			
 			System.out.println("**************************************FAILED ITEMS*******************************************************");
 			
 			for (String fItem : failedItem) {

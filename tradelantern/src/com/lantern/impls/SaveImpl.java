@@ -1,6 +1,7 @@
 package com.lantern.impls;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -81,4 +82,40 @@ public class SaveImpl {
 
 		return FAILURE;
 	}
+	
+	public String executeSP(String spName , Object[] params){
+
+		Session session = null;
+
+		try {
+
+			if(spName == null || params == null){
+				return "NULL VALUE NOT ACCEPTED";
+			}
+
+			session = HibernateUtils.getSessionFactory().openSession();
+
+			Query query = session.createSQLQuery(spName);
+			for (int i = 0; i < params.length; i++) {
+				query.setParameter(i, params[i]);
+			}
+			
+			query.executeUpdate();
+
+			return SUCCESS;
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			if( session != null)
+				session.close();
+		}
+
+		return FAILURE;
+	}
+	
+	
+	
 }

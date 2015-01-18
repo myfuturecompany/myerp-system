@@ -21,7 +21,7 @@ function findInvoiceNumber(){
 		
 }
 
-function savePurchase(){
+function savePurchase(saveAction){
 	var purchase = new Array();
 	
 	$('#purchaseTrasactionTable > tbody > tr').each(function(index , obj){
@@ -45,7 +45,32 @@ function savePurchase(){
 	purchaseSummary.push( $('#totalNetPrice').val() );
 	
 	PurchaseServices.savePurchase(purchase, purchaseSummary , $('#invoiceNumber').html() , function(p){
-		alert(p);
+
+		$('#totalParticulars').val( 0 );
+		$('#totalPrice').val( 0.00 );
+		$('#totalNetPrice').val( 0.00 );
+		$('#totalDiscount').val( 0.00 );
+		
+		cleanFields();
+		purchaseList = null;
+		populatePurchaseTrasactionTable();
+		populateItemStockTable();
+		findInvoiceNumber();
+		
+		if(saveAction == 'SAVEANDPRINT'){
+			//open popup
+			window.open("/tradelantern/web-application/pages/jsp/popups/printpurchasebill.jsp","PurchaseBillPrint",'height=450,width=600,scrollbars=yes');
+			
+		}else if (saveAction == 'SAVEANDNEW'){
+			//make sure every thing is cleaned
+			
+		}else if (saveAction == 'SAVE'){
+			//go to list page
+			showPurchaseList();
+			
+		}
+		
+		
 	});
 	
 	

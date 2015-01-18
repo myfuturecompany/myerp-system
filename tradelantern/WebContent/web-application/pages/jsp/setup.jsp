@@ -6,17 +6,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 </head>
-<body>
+<body onload="populateRoleMaster()">
 <jsp:include page="header.jsp"></jsp:include>
 <form action="" enctype="multipart/form-data">
 <div role="tabpanel">
 <br><br>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-	<li role="presentation" class="active"><a href="#role" aria-controls="role" role="tab" data-toggle="tab">Role</a></li>
-    <li role="presentation"><a href="#location" aria-controls="location" role="tab" data-toggle="tab"  >Location</a></li>
-    <li role="presentation"><a href="#item" aria-controls="item" role="tab" data-toggle="tab" >Item</a></li>
-    <li role="presentation"><a href="#customer" aria-controls="messages" role="customer" data-toggle="tab" >Customer</a></li>
+	<li role="presentation" class="active"><a href="#role" aria-controls="role" role="tab" data-toggle="tab" onclick="populateRoleMaster()">Role</a></li>
+    <li role="presentation"><a href="#location" aria-controls="location" role="tab" data-toggle="tab" onclick="populateLocationMaster()" >Location</a></li>
+    <li role="presentation"><a href="#item" aria-controls="item" role="tab" data-toggle="tab" onclick="populateItemMaster()" >Item</a></li>
+    <li role="presentation"><a href="#customer" aria-controls="messages" role="customer" data-toggle="tab" onclick="populateCustomerMaster()">Customer</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -419,12 +419,12 @@
 
 <script type="text/javascript">
 
-$(window).load(function() {
+/* $(window).load(function() {
 	populateRoleMaster();
 	populateLocationMaster();
 	populateItemMaster();
 	populateCustomerMaster();
-});
+}); */
 </script>
 
 </form>
