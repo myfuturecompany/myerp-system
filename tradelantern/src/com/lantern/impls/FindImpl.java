@@ -13,6 +13,7 @@ import com.lantern.beans.CustomerMaster;
 import com.lantern.beans.ItemMaster;
 import com.lantern.beans.LocationMaster;
 import com.lantern.beans.PurchaseSummary;
+import com.lantern.beans.PurchaseTransaction;
 import com.lantern.beans.RoleMaster;
 import com.lantern.beans.SellSummary;
 import com.lantern.beans.SellTransaction;
@@ -342,6 +343,42 @@ public class FindImpl {
 			criteria.add(Restrictions.eq("sellSummary.invoiceNo", invoiceNumber ));
 			
 			List<SellTransaction> list = criteria.list();
+			return list;
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+
+		return null;
+	}
+
+	public List<PurchaseSummary> findPurchaseSummaryList() {
+		try {
+
+			openConnection();
+			Criteria criteria = session.createCriteria(PurchaseSummary.class);
+			List<PurchaseSummary> list = criteria.list();
+			return list;
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+
+		return null;
+	}
+
+	public List<PurchaseTransaction> findPurchaseTransactionListByInvoice(String invoiceNumber) {
+		try {
+
+			openConnection();
+			Criteria criteria = session.createCriteria(PurchaseTransaction.class);
+			criteria.add(Restrictions.eq("invoiceNumber.invoiceNo", invoiceNumber ));
+			
+			List<PurchaseTransaction> list = criteria.list();
 			return list;
 
 		} catch (HibernateException e) {

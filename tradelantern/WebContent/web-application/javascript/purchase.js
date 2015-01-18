@@ -11,6 +11,7 @@ function showNewPurchaseDiv(){
 function showPurchaseList(){
 	$('#newPurchaseDiv').hide(500);
 	$('#purchaseSummaryListDiv').show(500);
+	purchaseSummaryList();
 	
 }
 
@@ -20,6 +21,74 @@ function findInvoiceNumber(){
 	});
 		
 }
+
+function purchaseSummaryList(){
+	
+	$('#purchaseSummaryDiv').html('');
+	$('<table id="purchaseSummaryTable" class="display master"></table>').appendTo('#purchaseSummaryDiv')
+	
+	PurchaseServices.findPurchaseSummaryList(function(p){
+		var purchaseSummary = JSON.parse(p);
+		odatatable = $('#purchaseSummaryTable').dataTable( {
+	    	"data": purchaseSummary,
+	    	"language": {
+	            "emptyTable":"No Items Added"
+	        },
+	        "columns": [
+	            {"title":"DATE", "data": "invoiceDate" },
+	            {"title":"INVOICE NUMBER", "data": "invoiceNumber" },
+	            {"title":"TOTAL PARTICULAR", "data": "totalParticular" },
+	            {"title":"TOTAL NET PRICE", "data": "netPrice" },
+	            {"title":"TOTAL DISCOUNT", "data": "discount" },
+	            {"title":"TOTAL SALE", "data": "totalSale" },
+	            {"title":"ACTION", "data": "actionBtn" }
+	        ]
+	    } );
+	});
+}
+
+function viewDetails(invoiceNumber){
+	
+	PurchaseServices.findPurchaseTransactionListByInvoice(invoiceNumber , function(p){
+		
+		$('#purchaseTransactionModalList').html('');
+		$('<table id="purchaseTransactionModalTable" class="display master"></table>').appendTo('#purchaseTransactionModalList')
+		
+		
+			var purchaseTrans = JSON.parse(p);
+			odatatable = $('#purchaseTransactionModalTable').dataTable( {
+		    	"data": purchaseTrans,
+		    	"language": {
+		            "emptyTable":"No Items Added"
+		        },
+		        "columns": [
+		            {"title":"ITEM", "data": "itemName" },
+		            {"title":"QUANTITY", "data": "quantity" },
+		            {"title":"UOM", "data": "uom" },
+		            {"title":"UNIT PRICE", "data": "unitPrice" },
+		            {"title":"NET PRICE", "data": "netPrice" }
+		        ]
+		        
+		        
+		        
+		        
+		    } );
+		
+		
+		$('#purchaseTransactionModalLabel').html(invoiceNumber);
+		
+		$('#purchaseTransactionModal').modal('show');
+		
+	});
+	
+	
+	
+}
+
+
+
+
+
 
 function savePurchase(saveAction){
 	var purchase = new Array();

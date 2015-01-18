@@ -7,8 +7,12 @@ import java.util.List;
 import java.util.UUID;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.lantern.beans.LocationMaster;
+import com.lantern.beans.PurchaseSummary;
+import com.lantern.beans.PurchaseTransaction;
 import com.lantern.beans.PurchaseSummary;
 import com.lantern.beans.PurchaseTransaction;
 import com.lantern.beans.StatusMaster;
@@ -45,6 +49,68 @@ public class PurchaseServices {
 		return maxInvoice.toString().split("-")[0] + "-"+ (Integer.parseInt(maxInvoice.toString().split("-")[1]) + 1);
 	}
 	
+	public String findPurchaseSummaryList(){
+
+		JSONArray arr;
+		try {
+			FindImpl impl = new FindImpl();
+			List<PurchaseSummary> sellList = impl.findPurchaseSummaryList();
+
+			arr = new JSONArray();
+			JSONObject object = null;
+			for (PurchaseSummary summary : sellList) {
+			
+				object = new JSONObject();
+				object.put("invoiceDate", summary.getTransactionDate());
+				object.put("invoiceNumber", summary.getInvoiceNo());
+				object.put("totalParticular", summary.getTotalParticulars());
+				object.put("netPrice", summary.getTotalPriceBeforeDisc());
+				object.put("discount", summary.getTotalPriceBeforeDisc().subtract(summary.getTotalPriceAfterDisc()) );
+				object.put("totalSale", summary.getTotalPriceAfterDisc());
+				object.put("actionBtn", "<button class='btn btn-sm btn-success' onclick=\"viewDetails('"+summary.getInvoiceNo()+"')\">Details</button>");
+				arr.put(object);
+				object = null;
+			}
+			
+			sellList = null;
+			
+			return arr.toString();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+	
+	
+	public String findPurchaseTransactionListByInvoice(String invoiceNumber){
+
+		JSONArray arr;
+		try {
+			FindImpl impl = new FindImpl();
+			List<PurchaseTransaction> sellList = impl.findPurchaseTransactionListByInvoice(invoiceNumber);
+
+			arr = new JSONArray();
+			
+			for (PurchaseTransaction trans : sellList) {
+			
+				JSONObject object = new JSONObject();
+				object.put("itemName", trans.getItemMaster().getItemName() );
+				object.put("quantity", trans.getPurchaseQty());
+				object.put("uom", trans.getItemMaster().getUom());
+				object.put("unitPrice", trans.getUnitPrice());
+				object.put("netPrice", trans.getNetPrice() );
+				arr.put(object);
+			}
+			
+			sellList = null;
+			return arr.toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+
+	}
 	
 	
 	public String savePurchase(String[][] purchase , String[] summary , String invoiceNumber){
