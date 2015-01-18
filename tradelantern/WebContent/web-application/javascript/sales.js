@@ -49,6 +49,43 @@ function sellSummaryList(){
 	});
 }
 
+function viewDetails(invoiceNumber){
+	
+	SalesServices.findSellTransactionListByInvoice(invoiceNumber , function(p){
+		
+		$('#sellTransactionModalList').html('');
+		$('<table id="sellTransactionModalTable" class="display master"></table>').appendTo('#sellTransactionModalList')
+		
+		
+			var sellTrans = JSON.parse(p);
+			odatatable = $('#sellTransactionModalTable').dataTable( {
+		    	"data": sellTrans,
+		    	"language": {
+		            "emptyTable":"No Items Added"
+		        },
+		        "columns": [
+		            {"title":"ITEM", "data": "itemName" },
+		            {"title":"QUANTITY", "data": "quantity" },
+		            {"title":"UOM", "data": "uom" },
+		            {"title":"UNIT PRICE", "data": "unitPrice" },
+		            {"title":"NET PRICE", "data": "netPrice" }
+		        ]
+		        
+		        
+		        
+		        
+		    } );
+		
+		
+		$('#sellTransactionModalLabel').html(invoiceNumber);
+		
+		$('#sellTransactionModal').modal('show');
+		
+	});
+	
+	
+	
+}
 
 function saveSell(saveAction){
 	var sell = new Array();

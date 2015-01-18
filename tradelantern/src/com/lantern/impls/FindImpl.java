@@ -15,6 +15,7 @@ import com.lantern.beans.LocationMaster;
 import com.lantern.beans.PurchaseSummary;
 import com.lantern.beans.RoleMaster;
 import com.lantern.beans.SellSummary;
+import com.lantern.beans.SellTransaction;
 import com.lantern.beans.StatusMaster;
 import com.lantern.utils.HibernateUtils;
 import com.lantern.utils.Status.LOCATION;
@@ -318,10 +319,29 @@ public class FindImpl {
 
 	public List<SellSummary> findSellSummaryList() {
 		try {
-			
+
 			openConnection();
 			Criteria criteria = session.createCriteria(SellSummary.class);
 			List<SellSummary> list = criteria.list();
+			return list;
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+
+		return null;
+	}
+
+	public List<SellTransaction> findSellTransactionListByInvoice(String invoiceNumber) {
+		try {
+
+			openConnection();
+			Criteria criteria = session.createCriteria(SellTransaction.class);
+			criteria.add(Restrictions.eq("sellSummary.invoiceNo", invoiceNumber ));
+			
+			List<SellTransaction> list = criteria.list();
 			return list;
 
 		} catch (HibernateException e) {

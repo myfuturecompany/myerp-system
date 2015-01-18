@@ -40,10 +40,10 @@ public class SalesServices {
 			List<SellSummary> sellList = impl.findSellSummaryList();
 
 			arr = new JSONArray();
-			
+			JSONObject object = null;
 			for (SellSummary summary : sellList) {
 			
-				JSONObject object = new JSONObject();
+				object = new JSONObject();
 				object.put("invoiceDate", summary.getTransactionDate());
 				object.put("invoiceNumber", summary.getInvoiceNo());
 				object.put("totalParticular", summary.getTotalParticular());
@@ -52,8 +52,10 @@ public class SalesServices {
 				object.put("totalSale", summary.getTotalPriceAfterDisc());
 				object.put("actionBtn", "<button class='btn btn-sm btn-success' onclick=\"viewDetails('"+summary.getInvoiceNo()+"')\">Details</button>");
 				arr.put(object);
+				object = null;
 			}
 			
+			sellList = null;
 			
 			return arr.toString();
 		} catch (JSONException e) {
@@ -63,6 +65,35 @@ public class SalesServices {
 
 	}
 	
+	
+	public String findSellTransactionListByInvoice(String invoiceNumber){
+
+		JSONArray arr;
+		try {
+			FindImpl impl = new FindImpl();
+			List<SellTransaction> sellList = impl.findSellTransactionListByInvoice(invoiceNumber);
+
+			arr = new JSONArray();
+			
+			for (SellTransaction trans : sellList) {
+			
+				JSONObject object = new JSONObject();
+				object.put("itemName", trans.getItemMaster().getItemName() );
+				object.put("quantity", trans.getSellQty());
+				object.put("uom", trans.getItemMaster().getUom());
+				object.put("unitPrice", trans.getUnitPrice());
+				object.put("netPrice", trans.getNetPrice() );
+				arr.put(object);
+			}
+			
+			sellList = null;
+			return arr.toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+
+	}
 	
 	
 	public String findInvoiceNumber(){

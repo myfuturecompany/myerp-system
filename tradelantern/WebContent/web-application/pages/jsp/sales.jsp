@@ -165,9 +165,9 @@
 					<h4 class="modal-title" id="sellTransactionModalLabel">INVOICE NO</h4>
 				</div>
 				
-				<div class="modal-body">
+				<div class="modal-body" id="sellTransactionModalList">
 
-					INVOICE TRANSACTIONS
+					
 					
 					
 				</div>
